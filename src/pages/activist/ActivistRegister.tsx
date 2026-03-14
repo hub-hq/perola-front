@@ -1,0 +1,151 @@
+import { useState, type FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Boxed from "@/components/Boxed/Boxed";
+import Button from "@/components/Button/Button";
+import CheckBoxInput from "@/components/CheckBoxInput/CheckBoxInput";
+import EmailInput from "@/components/EmailInput/EmailInput";
+import LabelInput from "@/components/LabelInput/LabelInput";
+import PasswordInput from "@/components/PasswordInput/PasswordInput";
+import PhoneInput from "@/components/PhoneInput/PhoneInput";
+import Spacing from "@/components/Spacing/Spacing";
+import Title from "@/components/Title/Title";
+import { register } from "@/services/auth";
+
+function ActivistRegister() {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const phone = String(formData.get("phone") ?? "").trim();
+    const password = String(formData.get("password") ?? "");
+    const confirmPassword = String(formData.get("confirmPassword") ?? "");
+
+    if (password !== confirmPassword) {
+      setErrorMessage("As senhas não conferem.");
+      return;
+    }
+
+    setIsLoading(true);
+    setErrorMessage("");
+
+    try {
+      await register({ name, email, phone, password });
+      navigate("/ativista/dashboard");
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error ? error.message : "Não foi possível criar a conta.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <main>
+      <Boxed>
+        <Title level={1}>Cadastro de Ativista</Title>
+        <Spacing size="sm" />
+        <p>Preencha os dados para criar sua conta.</p>
+
+        <Spacing size="xl" />
+
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="activist-register-name">Nome completo</label>
+          <Spacing size="xs" />
+          <LabelInput
+            id="activist-register-name"
+            name="name"
+            placeholder="Seu nome"
+            autoComplete="name"
+            required
+          />
+
+          <Spacing size="md" />
+
+          <label htmlFor="activist-register-email">E-mail</label>
+          <Spacing size="xs" />
+          <EmailInput
+            id="activist-register-email"
+            name="email"
+            placeholder="seuemail@exemplo.com"
+            autoComplete="email"
+            required
+          />
+
+          <Spacing size="md" />
+
+          <label htmlFor="activist-register-phone">Telefone</label>
+          <Spacing size="xs" />
+          <PhoneInput
+            id="activist-register-phone"
+            name="phone"
+            autoComplete="tel"
+            placeholder="(00) 00000-0000"
+            required
+          />
+
+          <Spacing size="md" />
+
+          <label htmlFor="activist-register-password">Senha</label>
+          <Spacing size="xs" />
+          <PasswordInput
+            id="activist-register-password"
+            name="password"
+            autoComplete="new-password"
+            placeholder="Crie uma senha"
+            required
+          />
+
+          <Spacing size="md" />
+
+          <label htmlFor="activist-register-confirm-password">Confirmar senha</label>
+          <Spacing size="xs" />
+          <PasswordInput
+            id="activist-register-confirm-password"
+            name="confirmPassword"
+            autoComplete="new-password"
+            placeholder="Repita sua senha"
+            required
+          />
+
+          <Spacing size="md" />
+
+          <Boxed>
+            <CheckBoxInput id="activist-register-terms" name="terms" required />
+            <label htmlFor="activist-register-terms">
+              Li e aceito os termos de uso e política de privacidade.
+            </label>
+          </Boxed>
+
+          <Spacing size="lg" />
+
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Criando conta..." : "Criar conta"}
+          </Button>
+
+          {errorMessage ? (
+            <>
+              <Spacing size="sm" />
+              <p>{errorMessage}</p>
+            </>
+          ) : null}
+        </form>
+
+        <Spacing size="md" />
+
+        <p>
+          Já possui conta? <Link to="/ativista/login">Entrar</Link>
+        </p>
+      </Boxed>
+    </main>
+  );
+}
+
+export default ActivistRegister;

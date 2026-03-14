@@ -1,17 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "@/layout/MainLayout";
-// import { AuthLayout } from "@/components/layout/AuthLayout";
+import { AuthLayout } from "@/layout/AuthLayout";
 
 import Home from "@/pages/Home";
 import Sobre from "@/pages/Sobre";
 import PrivacyPolicy from "@/pages/PoliticaPrivacidade";
 
-// import ActivistLanding from "@/pages/activist/ActivistLanding";
-// import ActivistRegister from "@/pages/activist/ActivistRegister";
-// import ActivistLogin from "@/pages/activist/ActivistLogin";
-// import ActivistDashboard from "@/pages/activist/ActivistDashboard";
+// Páginas do ativista
+import ActivistLogin from "@/pages/activist/ActivistLogin";
+import ActivistRegister from "@/pages/activist/ActivistRegister";
+import ActivistLanding from "@/pages/activist/ActivistLanding";
+import ActivistDashboard from "@/pages/activist/ActivistDashboard";
 
-// import { ProtectedRoute } from "./protected-route";
+import { ProtectedRoute } from "./protected-route";
 
 export const router = createBrowserRouter([
   {
@@ -20,25 +21,24 @@ export const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/sobre", element: <Sobre /> },
       { path: "/politica-privacidade", element: <PrivacyPolicy /> },
-      // { path: "/seja-ativista", element: <ActivistLanding /> },
+      { path: "/seja-ativista", element: <ActivistLanding /> },
     ],
   },
-
-  // {
-  //   element: <AuthLayout />,
-  //   children: [
-  //     { path: "/ativista/cadastro", element: <ActivistRegister /> },
-  //     { path: "/ativista/login", element: <ActivistLogin /> },
-  //     {
-  //       path: "/ativista/dashboard",
-  //       element: (
-  //         <ProtectedRoute>
-  //           <ActivistDashboard />
-  //         </ProtectedRoute>
-  //       ),
-  //     },
-  //   ],
-  // },
+  {
+    element: <AuthLayout />,
+    children: [
+      { path: "/ativista/cadastro", element: <ActivistRegister /> },
+      { path: "/ativista/login", element: <ActivistLogin /> },
+      {
+        path: "/ativista/dashboard",
+        element: (
+          <ProtectedRoute>
+            <ActivistDashboard />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 

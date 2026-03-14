@@ -19,7 +19,7 @@ function Button({
 
   const variants: Record<ButtonVariant, string> = {
     primary:
-      "bg-orange-600 text-white hover:bg-orange-700 focus:ring-orange-500",
+      "bg-orange-600 text-gray-900 hover:bg-orange-700 focus:ring-orange-500",
     secondary:
       "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-400",
     outline:
