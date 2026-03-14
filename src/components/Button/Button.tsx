@@ -8,7 +8,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: ButtonSize;
 };
 
-export function Button({
+function Button({
   variant = "primary",
   size = "md",
   className = "",
@@ -39,3 +39,5 @@ export function Button({
     />
   );
 }
+
+export default Button;
