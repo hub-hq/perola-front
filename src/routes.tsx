@@ -28,14 +28,24 @@ export const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       { path: "/ativista/cadastro", element: <ActivistRegister /> },
-      { path: "/ativista/login", element: <ActivistLogin /> },
+      { path: "/ativista/entrar", element: <ActivistLogin /> },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
       {
         path: "/ativista/dashboard",
         element: (
-          <ProtectedRoute>
             <ActivistDashboard />
-          </ProtectedRoute>
+          // <ProtectedRoute>
+          // </ProtectedRoute>
         ),
+        // element: (
+        //   <ProtectedRoute>
+        //     <ActivistDashboard />
+        //   </ProtectedRoute>
+        // ),
       },
     ],
   },

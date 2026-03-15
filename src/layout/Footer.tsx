@@ -68,7 +68,7 @@ export function Footer() {
 				<Spacing size="sm" />
 
 				<p>
-					Contato: <a href="mailto:contato@instituicaoperola.org.br">contato@instituicaoperola.org.br</a>
+					Contato: <a href="mailto:contato@instituicaoperola.org.br">contato@instituicaoperola.org.br</a> e <a href="mailto:contato@perola.social.br">contato@perola.social.br</a>
 				</p>
 				<small>© {currentYear} Instituição Pérola. Todos os direitos reservados.</small>
 			</Boxed>

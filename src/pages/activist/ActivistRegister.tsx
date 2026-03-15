@@ -49,14 +49,21 @@ function ActivistRegister() {
 
   return (
     <main>
-      <Boxed>
+      <Boxed
+        maxWidth="sm"
+        gap="md"
+        style={{
+          border: "1px solid rgba(0, 0, 0, 0.08)",
+          borderRadius: "24px",
+          background: "#ffffff",
+        }}
+      >
         <Title level={1}>Cadastro de Ativista</Title>
-        <Spacing size="sm" />
         <p>Preencha os dados para criar sua conta.</p>
 
-        <Spacing size="xl" />
+        <Spacing size="sm" />
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="activist-register-name">Nome completo</label>
           <Spacing size="xs" />
           <LabelInput
@@ -117,7 +124,7 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <Boxed>
+          <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="activist-register-terms" name="terms" required />
             <label htmlFor="activist-register-terms">
               Li e aceito os termos de uso e política de privacidade.
@@ -126,14 +133,14 @@ function ActivistRegister() {
 
           <Spacing size="lg" />
 
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading} fullWidth>
             {isLoading ? "Criando conta..." : "Criar conta"}
           </Button>
 
           {errorMessage ? (
             <>
               <Spacing size="sm" />
-              <p>{errorMessage}</p>
+              <p style={{ color: "#b91c1c", fontWeight: 600 }}>{errorMessage}</p>
             </>
           ) : null}
         </form>
@@ -141,7 +148,7 @@ function ActivistRegister() {
         <Spacing size="md" />
 
         <p>
-          Já possui conta? <Link to="/ativista/login">Entrar</Link>
+          Já possui conta? <Link to="/ativista/login">Entrar</Link>.
         </p>
       </Boxed>
     </main>

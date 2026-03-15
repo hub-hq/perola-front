@@ -15,24 +15,35 @@ function ActivistDashboard() {
 
   return (
     <main>
-      <Boxed>
+      <Boxed
+        maxWidth="md"
+        gap="md"
+        style={{
+          border: "1px solid rgba(0, 0, 0, 0.08)",
+          borderRadius: "24px",
+          background: "#ffffff",
+        }}
+      >
         <Title level={1}>Dashboard do Ativista</Title>
-        <Spacing size="sm" />
-        <p>Bem-vindo(a)! Este é um boilerplate inicial da área autenticada.</p>
+        <p>Bem-vindo(a)! Esta é sua área para acompanhar e fortalecer as ações da campanha.</p>
 
-        <Spacing size="xl" />
+        <Spacing size="sm" />
 
         <Title level={3}>Ações rápidas</Title>
-        <Spacing size="sm" />
 
-        <Boxed>
-          <Link to="/">
-            <Button type="button" variant="secondary">
+        <Boxed direction="row" gap="sm" wrap padding="none" align="center">
+          <Link to="/" style={{ flex: "1 1 220px" }}>
+            <Button type="button" variant="secondary" fullWidth>
               Ir para Home
             </Button>
           </Link>
-          <Spacing size="sm" direction="horizontal" />
-          <Button type="button" variant="outline" onClick={handleLogout}>
+
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleLogout}
+            style={{ flex: "1 1 220px" }}
+          >
             Sair
           </Button>
         </Boxed>

@@ -1,36 +1,46 @@
 import { Link } from "react-router-dom";
 import Boxed from "@/components/Boxed/Boxed";
 import Button from "@/components/Button/Button";
-import Spacing from "@/components/Spacing/Spacing";
 import Title from "@/components/Title/Title";
 
 function ActivistLanding() {
   return (
     <main>
-      <Boxed>
+      <Boxed maxWidth="md" gap="lg" padding="none">
         <Title level={1}>Área do Ativista</Title>
-        <Spacing size="sm" />
         <p>
           Participe da comunidade, acompanhe suas ações e fortaleça as campanhas.
         </p>
 
-        <Spacing size="xl" />
-
-        <Boxed>
+        <Boxed
+          gap="sm"
+          style={{
+            border: "1px solid rgba(0, 0, 0, 0.08)",
+            borderRadius: "20px",
+            background: "#ffffff",
+          }}
+        >
           <Title level={3}>Já possui conta?</Title>
-          <Spacing size="xs" />
-          <Link to="/ativista/login">
-            <Button type="button">Entrar</Button>
+          <p>Acesse para acompanhar ações, eventos e mobilizações.</p>
+          <Link to="/ativista/login" style={{ width: "100%" }}>
+            <Button type="button" fullWidth>
+              Entrar
+            </Button>
           </Link>
         </Boxed>
 
-        <Spacing size="lg" />
-
-        <Boxed>
+        <Boxed
+          gap="sm"
+          style={{
+            border: "1px solid rgba(0, 0, 0, 0.08)",
+            borderRadius: "20px",
+            background: "#ffffff",
+          }}
+        >
           <Title level={3}>Novo por aqui?</Title>
-          <Spacing size="xs" />
-          <Link to="/ativista/cadastro">
-            <Button type="button" variant="outline">
+          <p>Crie sua conta e venha construir essa luta com a gente.</p>
+          <Link to="/ativista/cadastro" style={{ width: "100%" }}>
+            <Button type="button" variant="outline" fullWidth>
               Criar conta
             </Button>
           </Link>

@@ -38,14 +38,21 @@ function ActivistLogin() {
 
   return (
     <main>
-      <Boxed>
+      <Boxed
+        maxWidth="sm"
+        gap="md"
+        style={{
+          border: "1px solid rgba(0, 0, 0, 0.08)",
+          borderRadius: "24px",
+          background: "#ffffff",
+        }}
+      >
         <Title level={1}>Entrar</Title>
-        <Spacing size="sm" />
         <p>Acesse sua conta de ativista.</p>
 
-        <Spacing size="xl" />
+        <Spacing size="sm" />
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="activist-login-email">E-mail</label>
           <Spacing size="xs" />
           <EmailInput
@@ -70,14 +77,14 @@ function ActivistLogin() {
 
           <Spacing size="lg" />
 
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading} fullWidth>
             {isLoading ? "Entrando..." : "Entrar"}
           </Button>
 
           {errorMessage ? (
             <>
               <Spacing size="sm" />
-              <p>{errorMessage}</p>
+              <p style={{ color: "#b91c1c", fontWeight: 600 }}>{errorMessage}</p>
             </>
           ) : null}
         </form>
@@ -85,7 +92,7 @@ function ActivistLogin() {
         <Spacing size="md" />
 
         <p>
-          Ainda não tem conta? <Link to="/ativista/cadastro">Cadastre-se</Link>
+          Ainda não tem conta? <Link to="/ativista/cadastro">Cadastre-se</Link>.
         </p>
       </Boxed>
     </main>
