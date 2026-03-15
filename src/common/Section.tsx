@@ -1,15 +1,40 @@
-import type { JSX } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
+import Boxed from "@/components/Boxed/Boxed";
+import Spacing from "@/components/Spacing/Spacing";
+import Title from "@/components/Title/Title";
 
-type SectionProps = {
+type SectionProps = HTMLAttributes<HTMLElement> & {
   title?: string;
-  children?: JSX.Element;
+  children?: ReactNode;
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
+  gap?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+  padded?: boolean;
 };
 
-export function Section({ title, children }: SectionProps) {
+export function Section({
+  title,
+  children,
+  maxWidth = "xl",
+  gap = "md",
+  padded = false,
+  style,
+  ...props
+}: SectionProps) {
   return (
-    <section className="py-12 px-4 max-w-6xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">{title}</h2>
-      {children}
+    <section style={style} {...props}>
+      <Boxed
+        maxWidth={maxWidth}
+        padding={padded ? "md" : "none"}
+        gap={gap}
+      >
+        {title ? (
+          <>
+            <Title level={2}>{title}</Title>
+            <Spacing size="xs" />
+          </>
+        ) : null}
+        {children}
+      </Boxed>
     </section>
   );
 }
