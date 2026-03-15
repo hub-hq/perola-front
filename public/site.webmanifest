@@ -1,0 +1,16 @@
+{
+  "name": "Instituição Pérola",
+  "short_name": "Pérola",
+  "description": "Informação pública com transparência, participação e compromisso com a comunidade.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f9fb",
+  "theme_color": "#646cff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

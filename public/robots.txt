@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /ativista/dashboard
+Disallow: /ativista/home
+
+Sitemap: https://perola.social.br/sitemap.xml
