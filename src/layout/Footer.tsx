@@ -1,12 +1,54 @@
 import { Boxed, Spacing } from "@/components";
 
+type SocialLink = {
+	name: string;
+	href: string;
+	iconUrl: string;
+};
+
+const socialLinks: SocialLink[] = [
+	{
+		name: "Instagram",
+		href: "https://www.instagram.com",
+		iconUrl: "https://cdn.simpleicons.org/instagram/646cff",
+	},
+	{
+		name: "Facebook",
+		href: "https://www.facebook.com",
+		iconUrl: "https://cdn.simpleicons.org/facebook/646cff",
+	},
+	{
+		name: "YouTube",
+		href: "https://www.youtube.com",
+		iconUrl: "https://cdn.simpleicons.org/youtube/646cff",
+	},
+	{
+		name: "LinkedIn",
+		href: "https://www.linkedin.com",
+		iconUrl: "https://cdn.simpleicons.org/linkedin/0A66C2",
+	},
+	{
+		name: "WhatsApp",
+		href: "https://www.whatsapp.com",
+		iconUrl: "https://cdn.simpleicons.org/whatsapp/646cff",
+	},
+];
+
 export function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer>
-			<Boxed maxWidth="xl" padding="lg" gap="sm">
-				<strong>Instituição Pérola</strong>
+		<footer
+			style={{
+				width: "100%",
+				borderTop: "1px solid rgba(0, 0, 0, 0.08)",
+				background: "rgba(255, 255, 255, 0.96)",
+			}}
+		>
+			<Boxed maxWidth="xl" padding="lg" gap="sm" align="center">
+				<strong style={{ textAlign: "center", fontSize: "1.05rem" }}>
+					Instituição Pérola
+				</strong>
 				<p>
 					Informação pública com transparência, participação e compromisso com a
 					comunidade.
@@ -15,61 +57,61 @@ export function Footer() {
 				<Spacing size="sm" />
 
 				<nav aria-label="Redes sociais">
-					<ul>
-						<li>
-							<a
-								href="https://www.instagram.com"
-								target="_blank"
-								rel="noreferrer"
-							>
-								Instagram
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.facebook.com"
-								target="_blank"
-								rel="noreferrer"
-							>
-								Facebook
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.youtube.com"
-								target="_blank"
-								rel="noreferrer"
-							>
-								YouTube
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.linkedin.com"
-								target="_blank"
-								rel="noreferrer"
-							>
-								LinkedIn
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.whatsapp.com"
-								target="_blank"
-								rel="noreferrer"
-							>
-								WhatsApp
-							</a>
-						</li>
+					<ul
+						style={{
+							display: "flex",
+							flexWrap: "wrap",
+							justifyContent: "center",
+							gap: "10px",
+							padding: 0,
+							margin: 0,
+							listStyle: "none",
+						}}
+					>
+						{socialLinks.map((social) => (
+							<li key={social.name}>
+								<a
+									href={social.href}
+									target="_blank"
+									rel="noreferrer"
+									style={{
+										display: "inline-flex",
+										alignItems: "center",
+										gap: "8px",
+										minHeight: "40px",
+										padding: "0 14px",
+										borderRadius: "9999px",
+										border: "1px solid rgba(0, 0, 0, 0.10)",
+										background: "#ffffff",
+										fontWeight: 600,
+										textDecoration: "none",
+									}}
+								>
+									<img
+										src={social.iconUrl}
+										alt={social.name}
+										width={18}
+										height={18}
+										onError={(event) => {
+											event.currentTarget.style.display = "none";
+										}}
+										style={{ display: "block" }}
+									/>
+									<span>{social.name}</span>
+								</a>
+							</li>
+						))}
 					</ul>
 				</nav>
 
 				<Spacing size="sm" />
 
-				<p>
+				<p style={{ textAlign: "center" }}>
 					Contato: <a href="mailto:contato@instituicaoperola.org.br">contato@instituicaoperola.org.br</a> e <a href="mailto:contato@perola.social.br">contato@perola.social.br</a>
 				</p>
-				<small>© {currentYear} Instituição Pérola. Todos os direitos reservados.</small>
+				<small style={{ textAlign: "center" }}>
+					© {currentYear} Instituição Pérola. Todos os direitos reservados.
+				</small>
 			</Boxed>
 		</footer>
 	);
