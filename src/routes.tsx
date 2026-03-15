@@ -4,6 +4,8 @@ import { AuthLayout } from "@/layout/AuthLayout";
 
 import Home from "@/pages/Home";
 import Sobre from "@/pages/Sobre";
+import Causas from "@/pages/Causas";
+import SejaAtivista from "@/pages/SejaAtivista";
 import PrivacyPolicy from "@/pages/PoliticaPrivacidade";
 
 // Páginas do ativista
@@ -20,32 +22,30 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/sobre", element: <Sobre /> },
+      { path: "/causas", element: <Causas /> },
       { path: "/politica-privacidade", element: <PrivacyPolicy /> },
-      { path: "/seja-ativista", element: <ActivistLanding /> },
+      { path: "/seja-ativista", element: <SejaAtivista /> },
+      { path: "/ativista", element: <ActivistLanding /> },
     ],
   },
   {
     element: <AuthLayout />,
     children: [
       { path: "/ativista/cadastro", element: <ActivistRegister /> },
-      { path: "/ativista/entrar", element: <ActivistLogin /> },
+      { path: "/ativista/login", element: <ActivistLogin /> },
     ],
   },
   {
     element: <AuthLayout />,
     children: [
+      { path: "/ativista/home", element: <ActivistDashboard /> },
       {
         path: "/ativista/dashboard",
         element: (
+          <ProtectedRoute>
             <ActivistDashboard />
-          // <ProtectedRoute>
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
-        // element: (
-        //   <ProtectedRoute>
-        //     <ActivistDashboard />
-        //   </ProtectedRoute>
-        // ),
       },
     ],
   },
