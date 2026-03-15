@@ -9,28 +9,38 @@ type SocialLink = {
 const socialLinks: SocialLink[] = [
 	{
 		name: "Instagram",
-		href: "https://www.instagram.com",
-		iconUrl: "https://cdn.simpleicons.org/instagram/646cff",
+		href: "https://www.instagram.com/perolathaisampaio",
+		iconUrl: "/icons/social/instagram.svg",
 	},
 	{
 		name: "Facebook",
 		href: "https://www.facebook.com",
-		iconUrl: "https://cdn.simpleicons.org/facebook/646cff",
+		iconUrl: "/icons/social/facebook.svg",
 	},
 	{
 		name: "YouTube",
 		href: "https://www.youtube.com",
-		iconUrl: "https://cdn.simpleicons.org/youtube/646cff",
+		iconUrl: "/icons/social/youtube.svg",
 	},
 	{
 		name: "LinkedIn",
 		href: "https://www.linkedin.com",
-		iconUrl: "https://cdn.simpleicons.org/linkedin/0A66C2",
+		iconUrl: "/icons/social/linkedin.svg",
 	},
 	{
 		name: "WhatsApp",
 		href: "https://www.whatsapp.com",
-		iconUrl: "https://cdn.simpleicons.org/whatsapp/646cff",
+		iconUrl: "/icons/social/whatsapp.svg",
+	},
+	{
+		name: "Threads",
+		href: "https://www.threads.net",
+		iconUrl: "/icons/social/threads.svg",
+	},
+	{
+		name: "X",
+		href: "https://x.com",
+		iconUrl: "/icons/social/x.svg",
 	},
 ];
 
