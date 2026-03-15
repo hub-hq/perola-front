@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import Boxed from "@/components/Boxed/Boxed";
-import Button from "@/components/Button/Button";
-import Title from "@/components/Title/Title";
+import { Boxed, Button, Title } from "@/components";
 
 function ActivistLanding() {
   return (

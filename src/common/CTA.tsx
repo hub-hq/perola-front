@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import Boxed from "@/components/Boxed/Boxed";
-import Spacing from "@/components/Spacing/Spacing";
+import { Boxed, Spacing } from "@/components";
 
 type CTAAction = {
   label: string;

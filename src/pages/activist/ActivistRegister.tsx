@@ -1,14 +1,16 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Boxed from "@/components/Boxed/Boxed";
-import Button from "@/components/Button/Button";
-import CheckBoxInput from "@/components/CheckBoxInput/CheckBoxInput";
-import EmailInput from "@/components/EmailInput/EmailInput";
-import LabelInput from "@/components/LabelInput/LabelInput";
-import PasswordInput from "@/components/PasswordInput/PasswordInput";
-import PhoneInput from "@/components/PhoneInput/PhoneInput";
-import Spacing from "@/components/Spacing/Spacing";
-import Title from "@/components/Title/Title";
+import {
+  Boxed,
+  Button,
+  CheckBoxInput,
+  EmailInput,
+  LabelInput,
+  PasswordInput,
+  PhoneInput,
+  Spacing,
+  Title,
+} from "@/components";
 import { register } from "@/services/auth";
 
 function ActivistRegister() {

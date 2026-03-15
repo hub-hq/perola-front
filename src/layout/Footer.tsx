@@ -1,5 +1,4 @@
-import Boxed from "@/components/Boxed/Boxed";
-import Spacing from "@/components/Spacing/Spacing";
+import { Boxed, Spacing } from "@/components";
 
 export function Footer() {
 	const currentYear = new Date().getFullYear();

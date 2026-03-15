@@ -1,6 +1,4 @@
-import Boxed from "@/components/Boxed/Boxed";
-import Spacing from "@/components/Spacing/Spacing";
-import Title from "@/components/Title/Title";
+import { Boxed, Spacing, Title } from "@/components";
 
 export default function Sobre() {
   return (

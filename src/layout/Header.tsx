@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Boxed from "@/components/Boxed/Boxed";
+import { Boxed } from "@/components";
 
 const navItemStyle = {
   fontWeight: 600,

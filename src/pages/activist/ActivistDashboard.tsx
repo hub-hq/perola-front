@@ -1,8 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Boxed from "@/components/Boxed/Boxed";
-import Button from "@/components/Button/Button";
-import Spacing from "@/components/Spacing/Spacing";
-import Title from "@/components/Title/Title";
+import { Boxed, Button, Spacing, Title } from "@/components";
 import { logout } from "@/services/auth";
 
 function ActivistDashboard() {

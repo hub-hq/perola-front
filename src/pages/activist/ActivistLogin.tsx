@@ -1,11 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
-import Boxed from "@/components/Boxed/Boxed";
-import Button from "@/components/Button/Button";
-import EmailInput from "@/components/EmailInput/EmailInput";
-import PasswordInput from "@/components/PasswordInput/PasswordInput";
-import Spacing from "@/components/Spacing/Spacing";
-import Title from "@/components/Title/Title";
+import {
+  Boxed,
+  Button,
+  EmailInput,
+  PasswordInput,
+  Spacing,
+  Title,
+} from "@/components";
 import { login } from "@/services/auth";
 import { useNavigate } from "react-router-dom";
 
