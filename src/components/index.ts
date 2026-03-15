@@ -1,5 +1,6 @@
 export { default as Boxed } from "./Boxed";
 export { default as Button } from "./Button";
+export { CTA } from "./CTA";
 export { default as CepInput } from "./CepInput";
 export { default as CheckBoxInput } from "./CheckBoxInput";
 export { default as DateInput } from "./DateInput";
@@ -11,6 +12,7 @@ export { default as LabelInput } from "./LabelInput";
 export { default as PasswordInput } from "./PasswordInput";
 export { default as PhoneInput } from "./PhoneInput";
 export { default as RadioInput } from "./RadioInput";
+export { Section } from "./Section";
 export { default as SelectInput } from "./SelectInput";
 export { default as Spacing } from "./Spacing";
 export { default as TextAreaInput } from "./TextAreaInput";

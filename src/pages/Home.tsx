@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { CTA } from "@/common/CTA";
-import { Boxed, Spacing, Title } from "@/components";
+import { Boxed, CTA, Spacing, Title } from "@/components";
 
 export default function Home() {
   const priorities = [

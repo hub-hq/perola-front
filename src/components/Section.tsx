@@ -1,5 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { Boxed, Spacing, Title } from "@/components";
+import Boxed from "./Boxed";
+import Spacing from "./Spacing";
+import Title from "./Title";
 
 type SectionProps = HTMLAttributes<HTMLElement> & {
   title?: string;
@@ -20,11 +22,7 @@ export function Section({
 }: SectionProps) {
   return (
     <section style={style} {...props}>
-      <Boxed
-        maxWidth={maxWidth}
-        padding={padded ? "md" : "none"}
-        gap={gap}
-      >
+      <Boxed maxWidth={maxWidth} padding={padded ? "md" : "none"} gap={gap}>
         {title ? (
           <>
             <Title level={2}>{title}</Title>
