@@ -1,7 +1,7 @@
 :root {
-	--color-brand-primary: #c8102e;
-	--color-brand-hover: #a10d24;
-	--color-brand-soft: #e23a53;
+	--color-brand-primary: #e01e24;
+	--color-brand-hover: #b1161b;
+	--color-brand-soft: #f24f56;
 
 	--color-text-primary: #1b1b1b;
 	--color-text-heading: #111111;
@@ -10,24 +10,24 @@
 	--color-text-body: #2d2926;
 	--color-text-inverse: #ffffff;
 
-	--color-surface-page: #f7f3ec;
+	--color-surface-page: #f8f3e9;
 	--color-surface-base: #ffffff;
-	--color-surface-overlay: rgba(255, 255, 255, 0.92);
-	--color-surface-soft: rgba(252, 248, 241, 0.96);
-	--color-surface-muted: #efe8dc;
+	--color-surface-overlay: rgba(255, 255, 255, 0.94);
+	--color-surface-soft: rgba(253, 248, 238, 0.97);
+	--color-surface-muted: #f1e7d6;
 
-	--color-border-subtle: rgba(17, 17, 17, 0.12);
-	--color-border-soft: rgba(17, 17, 17, 0.2);
-	--color-border-accent: rgba(199, 167, 44, 0.45);
-	--color-border-neutral: #d8ccb8;
+	--color-border-subtle: rgba(17, 17, 17, 0.14);
+	--color-border-soft: rgba(17, 17, 17, 0.24);
+	--color-border-accent: rgba(221, 176, 34, 0.55);
+	--color-border-neutral: #dbc9ac;
 
 	--color-focus-ring: var(--color-brand-primary);
 
-	--color-accent-soft: rgba(0, 122, 61, 0.08);
-	--color-accent-soft-strong: rgba(0, 122, 61, 0.18);
-	--color-accent-gradient-start-soft: rgba(200, 16, 46, 0.12);
-	--color-accent-gradient-start: rgba(200, 16, 46, 0.18);
-	--color-accent-gradient-end: rgba(0, 122, 61, 0.1);
+	--color-accent-soft: rgba(0, 140, 69, 0.12);
+	--color-accent-soft-strong: rgba(0, 140, 69, 0.24);
+	--color-accent-gradient-start-soft: rgba(224, 30, 36, 0.18);
+	--color-accent-gradient-start: rgba(224, 30, 36, 0.26);
+	--color-accent-gradient-end: rgba(0, 140, 69, 0.16);
 
-	--color-feedback-error: #a10d24;
+	--color-feedback-error: #b1161b;
 }
