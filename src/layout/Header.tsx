@@ -7,7 +7,7 @@ const navItemStyle = {
 };
 
 const pillStyle = {
-  border: "1px solid var(--color-border-brand-soft)",
+  border: "1px solid var(--color-border-accent)",
   borderRadius: "9999px",
   padding: "6px 12px",
   fontSize: "0.85rem",
@@ -21,7 +21,7 @@ export function Header() {
       style={{
         width: "100%",
         borderBottom: "1px solid var(--color-border-subtle)",
-        background: "var(--color-bg-surface-soft)",
+        background: "var(--color-surface-soft)",
       }}
     >
       <Boxed maxWidth="xl" padding="lg" gap="md">
@@ -58,7 +58,7 @@ export function Header() {
           style={{
             border: "1px solid var(--color-border-subtle)",
             borderRadius: "16px",
-            background: "var(--color-bg-brand-soft)",
+            background: "var(--color-accent-soft)",
           }}
         >
           <strong style={{ fontSize: "1.05rem" }}>

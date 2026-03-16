@@ -52,7 +52,7 @@ export function Footer() {
 			style={{
 				width: "100%",
 				borderTop: "1px solid var(--color-border-subtle)",
-				background: "var(--color-bg-surface-soft)",
+				background: "var(--color-surface-soft)",
 			}}
 		>
 			<Boxed maxWidth="xl" padding="lg" gap="sm" align="center">
@@ -92,7 +92,7 @@ export function Footer() {
 										padding: "0 14px",
 										borderRadius: "9999px",
 										border: "1px solid var(--color-border-soft)",
-										background: "var(--color-bg-surface)",
+										background: "var(--color-surface-base)",
 										fontWeight: 600,
 										textDecoration: "none",
 									}}

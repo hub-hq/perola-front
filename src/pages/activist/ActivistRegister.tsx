@@ -57,7 +57,7 @@ function ActivistRegister() {
         style={{
           border: "1px solid var(--color-border-subtle)",
           borderRadius: "24px",
-          background: "var(--color-bg-surface)",
+          background: "var(--color-surface-base)",
         }}
       >
         <Title level={1}>Cadastro de Ativista</Title>

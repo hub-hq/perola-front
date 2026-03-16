@@ -42,7 +42,7 @@ export default function Causas() {
           style={{
             border: "1px solid var(--color-border-subtle)",
             borderRadius: "24px",
-            background: "linear-gradient(135deg, var(--color-bg-brand-gradient-start-soft), var(--color-bg-brand-gradient-end))",
+            background: "linear-gradient(135deg, var(--color-accent-gradient-start-soft), var(--color-accent-gradient-end))",
           }}
         >
           <Title level={1}>Causas que movem nossa caminhada</Title>
@@ -64,11 +64,11 @@ export default function Causas() {
                 flex: "1 1 280px",
                 border: "1px solid var(--color-border-subtle)",
                 borderRadius: "18px",
-                background: "var(--color-bg-surface)",
+                  background: "var(--color-surface-base)",
               }}
             >
               <Title level={3}>{cause.title}</Title>
-              <p style={{ color: "var(--color-text-muted)" }}>{cause.description}</p>
+              <p style={{ color: "var(--color-text-secondary)" }}>{cause.description}</p>
             </Boxed>
           ))}
         </Boxed>

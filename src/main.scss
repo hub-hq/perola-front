@@ -7,7 +7,7 @@
 
   color-scheme: light;
   color: var(--color-text-primary);
-  background-color: var(--color-bg-page);
+  background-color: var(--color-surface-page);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -39,11 +39,11 @@ body {
 
 a {
   font-weight: 500;
-  color: var(--color-brand-500);
+  color: var(--color-brand-primary);
   text-decoration: inherit;
 
   &:hover {
-    color: var(--color-brand-600);
+    color: var(--color-brand-hover);
   }
 }
 
@@ -70,17 +70,17 @@ button {
   font-size: 1em;
   font-weight: 600;
   font-family: inherit;
-  background-color: var(--color-bg-neutral);
+  background-color: var(--color-surface-muted);
   cursor: pointer;
   transition: border-color 0.2s, background-color 0.2s;
 
   &:hover {
-    border-color: var(--color-brand-500);
+    border-color: var(--color-brand-primary);
   }
 
   &:focus,
   &:focus-visible {
-    outline: 3px solid var(--color-focus);
+    outline: 3px solid var(--color-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -88,14 +88,14 @@ button {
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--color-text-primary);
-    background-color: var(--color-bg-page);
+    background-color: var(--color-surface-page);
   }
 
   a:hover {
-    color: var(--color-brand-400);
+    color: var(--color-brand-soft);
   }
 
   button {
-    background-color: var(--color-bg-neutral);
+    background-color: var(--color-surface-muted);
   }
 }

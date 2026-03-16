@@ -15,7 +15,7 @@ function ActivistLanding() {
           style={{
             border: "1px solid var(--color-border-subtle)",
             borderRadius: "20px",
-            background: "var(--color-bg-surface)",
+            background: "var(--color-surface-base)",
           }}
         >
           <Title level={3}>Já possui conta?</Title>
@@ -32,7 +32,7 @@ function ActivistLanding() {
           style={{
             border: "1px solid var(--color-border-subtle)",
             borderRadius: "20px",
-            background: "var(--color-bg-surface)",
+            background: "var(--color-surface-base)",
           }}
         >
           <Title level={3}>Novo por aqui?</Title>

@@ -17,13 +17,13 @@ type CTAProps = {
 
 const actionStyles = {
   primary: {
-    background: "var(--color-brand-500)",
-    color: "var(--color-text-on-brand)",
-    border: "1px solid var(--color-brand-500)",
+    background: "var(--color-brand-primary)",
+    color: "var(--color-text-inverse)",
+    border: "1px solid var(--color-brand-primary)",
   },
   secondary: {
-    background: "var(--color-bg-surface)",
-    color: "var(--color-text-strong)",
+    background: "var(--color-surface-base)",
+    color: "var(--color-text-heading)",
     border: "1px solid var(--color-border-soft)",
   },
 } as const;
@@ -71,12 +71,12 @@ export function CTA({
       style={{
         borderRadius: "24px",
         border: "1px solid var(--color-border-subtle)",
-        background: "linear-gradient(135deg, var(--color-bg-brand-gradient-start), var(--color-bg-brand-gradient-end))",
+        background: "linear-gradient(135deg, var(--color-accent-gradient-start), var(--color-accent-gradient-end))",
       }}
     >
       <strong style={{ fontSize: "1.35rem", lineHeight: 1.2 }}>{title}</strong>
 
-      <p style={{ margin: 0, color: "var(--color-text-muted)" }}>{description}</p>
+      <p style={{ margin: 0, color: "var(--color-text-secondary)" }}>{description}</p>
 
       <Spacing size="xs" />
 

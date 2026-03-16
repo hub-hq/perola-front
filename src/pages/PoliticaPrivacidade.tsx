@@ -11,7 +11,7 @@ export default function PoliticaPrivacidade() {
           style={{
             borderRadius: "24px",
             border: "1px solid var(--color-border-subtle)",
-            background: "var(--color-bg-surface)",
+            background: "var(--color-surface-base)",
           }}
         >
           <Title level={1}>Política de Privacidade</Title>
@@ -19,7 +19,7 @@ export default function PoliticaPrivacidade() {
             Esta página descreve, de forma objetiva, como os dados pessoais são
             tratados nos canais da Instituição Pérola.
           </p>
-          <small style={{ color: "var(--color-text-subtle)" }}>Atualizado em {currentYear}</small>
+          <small style={{ color: "var(--color-text-tertiary)" }}>Atualizado em {currentYear}</small>
         </Boxed>
 
         <Boxed gap="md" style={sectionStyle}>
@@ -75,5 +75,5 @@ export default function PoliticaPrivacidade() {
 const sectionStyle = {
   borderRadius: "20px",
   border: "1px solid var(--color-border-subtle)",
-  background: "var(--color-bg-surface)",
+  background: "var(--color-surface-base)",
 };
