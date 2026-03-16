@@ -13,7 +13,7 @@ import {
 } from "@/components";
 import { register } from "@/services/auth";
 
-function ActivistRegister() {
+function Register() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -157,4 +157,4 @@ function ActivistRegister() {
   );
 }
 
-export default ActivistRegister;
+export default Register;

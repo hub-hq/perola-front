@@ -15,6 +15,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  min-height: 100%;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-page);
+  color-scheme: light;
+}
+
 *,
 *::before,
 *::after {
@@ -25,6 +32,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-page);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,6 +41,9 @@ body {
 
 #root {
   width: 100%;
+  min-height: 100vh;
+  color: inherit;
+  background-color: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;

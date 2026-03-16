@@ -42,6 +42,9 @@ export function Header() {
               <Link to="/sobre" style={navItemStyle}>
                 Sobre
               </Link>
+              <Link to="/trajetoria" style={navItemStyle}>
+                Trajetória
+              </Link>
               <Link to="/seja-ativista" style={navItemStyle}>
                 Seja Ativista
               </Link>
@@ -70,7 +73,7 @@ export function Header() {
           </p>
           <Boxed direction="row" gap="sm" wrap padding="none">
             <Link to="/seja-ativista">Quero apoiar</Link>
-            <Link to="/sobre">Conheça a trajetória</Link>
+            <Link to="/trajetoria">Conheça a trajetória</Link>
           </Boxed>
         </Boxed>
 

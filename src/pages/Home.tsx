@@ -203,7 +203,7 @@ export default function Home() {
               },
               {
                 label: "Conheça a trajetória",
-                href: "/sobre",
+                href: "/trajetoria",
                 variant: "secondary",
               },
             ]}
