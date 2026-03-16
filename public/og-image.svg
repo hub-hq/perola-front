@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Instituição Pérola">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#646cff" />
-      <stop offset="100%" stop-color="#8b5cf6" />
+      <stop offset="0%" stop-color="#e01e24" />
+      <stop offset="65%" stop-color="#b1161b" />
+      <stop offset="100%" stop-color="#008c45" />
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
@@ -13,7 +14,7 @@
   <text x="320" y="250" fill="#ffffff" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="56" font-weight="800">
     Pérola Sampaio
   </text>
-  <text x="320" y="315" fill="#eef2ff" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="34" font-weight="600">
+  <text x="320" y="315" fill="#fce7b2" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="34" font-weight="600">
     Instituição Pérola
   </text>
   <text x="320" y="385" fill="#ffffff" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="30" font-weight="500">
@@ -23,7 +24,7 @@
     e com justiça social.
   </text>
 
-  <text x="320" y="545" fill="#e0e7ff" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="24" font-weight="500">
+  <text x="320" y="545" fill="#f8f3e9" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="24" font-weight="500">
     perola.social.br
   </text>
 </svg>

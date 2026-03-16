@@ -4,8 +4,8 @@
   "description": "Informação pública com transparência, participação e compromisso com a comunidade.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f9f9fb",
-  "theme_color": "#646cff",
+  "background_color": "#f8f3e9",
+  "theme_color": "#e01e24",
   "icons": [
     {
       "src": "/favicon.svg",
