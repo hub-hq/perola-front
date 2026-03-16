@@ -34,7 +34,7 @@ const socialLinks: SocialLink[] = [
 	},
 	{
 		name: "Threads",
-		href: "https://www.threads.net",
+		href: "https://www.threads.com/@perolathaisampaio",
 		iconUrl: "/icons/social/threads.svg",
 	},
 	{
