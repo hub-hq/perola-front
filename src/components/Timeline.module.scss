@@ -1,0 +1,60 @@
+.rail {
+  width: 72px;
+  flex: 0 0 72px;
+  position: relative;
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.connectionTop,
+.connectionBottom {
+  position: absolute;
+  left: 50%;
+  height: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.connectionTop {
+  top: 0;
+}
+
+.connectionBottom {
+  bottom: 0;
+}
+
+.node {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  z-index: 1;
+}
+
+.year {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 479px) {
+  .rail {
+    width: 48px;
+    flex: 0 0 48px;
+  }
+
+  .node {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .year {
+    font-size: 0.75rem;
+  }
+}
