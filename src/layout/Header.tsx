@@ -7,7 +7,7 @@ const navItemStyle = {
 };
 
 const pillStyle = {
-  border: "1px solid rgba(100, 108, 255, 0.35)",
+  border: "1px solid var(--color-border-brand-soft)",
   borderRadius: "9999px",
   padding: "6px 12px",
   fontSize: "0.85rem",
@@ -20,8 +20,8 @@ export function Header() {
     <header
       style={{
         width: "100%",
-        borderBottom: "1px solid rgba(0, 0, 0, 0.08)",
-        background: "rgba(255, 255, 255, 0.96)",
+        borderBottom: "1px solid var(--color-border-subtle)",
+        background: "var(--color-bg-surface-soft)",
       }}
     >
       <Boxed maxWidth="xl" padding="lg" gap="md">
@@ -56,9 +56,9 @@ export function Header() {
           padding="md"
           gap="sm"
           style={{
-            border: "1px solid rgba(0, 0, 0, 0.08)",
+            border: "1px solid var(--color-border-subtle)",
             borderRadius: "16px",
-            background: "rgba(100, 108, 255, 0.04)",
+            background: "var(--color-bg-brand-soft)",
           }}
         >
           <strong style={{ fontSize: "1.05rem" }}>

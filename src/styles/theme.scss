@@ -1,0 +1,27 @@
+:root {
+	--color-brand-500: #646cff;
+	--color-brand-600: #535bf2;
+	--color-brand-400: #747bff;
+
+	--color-text-primary: #213547;
+	--color-text-strong: #111827;
+	--color-text-muted: #4b5563;
+	--color-text-on-brand: #ffffff;
+
+	--color-bg-page: #f9f9fb;
+	--color-bg-surface: #ffffff;
+	--color-bg-surface-soft: rgba(255, 255, 255, 0.96);
+	--color-bg-neutral: #f3f4f6;
+
+	--color-border-subtle: rgba(0, 0, 0, 0.08);
+	--color-border-soft: rgba(0, 0, 0, 0.12);
+	--color-border-brand-soft: rgba(100, 108, 255, 0.35);
+	--color-border-neutral: #e5e7eb;
+
+	--color-focus: var(--color-brand-500);
+
+	--color-bg-brand-soft: rgba(100, 108, 255, 0.04);
+	--color-bg-brand-soft-strong: rgba(100, 108, 255, 0.12);
+	--color-bg-brand-gradient-start: rgba(100, 108, 255, 0.12);
+	--color-bg-brand-gradient-end: rgba(100, 108, 255, 0.03);
+}

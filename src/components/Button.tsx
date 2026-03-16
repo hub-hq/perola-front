@@ -26,19 +26,19 @@ const baseStyle: CSSProperties = {
 
 const variantStyles: Record<ButtonVariant, CSSProperties> = {
   primary: {
-    background: "#646cff",
-    color: "#ffffff",
-    borderColor: "#646cff",
+    background: "var(--color-brand-500)",
+    color: "var(--color-text-on-brand)",
+    borderColor: "var(--color-brand-500)",
   },
   secondary: {
-    background: "#f3f4f6",
-    color: "#111827",
-    borderColor: "#e5e7eb",
+    background: "var(--color-bg-neutral)",
+    color: "var(--color-text-strong)",
+    borderColor: "var(--color-border-neutral)",
   },
   outline: {
-    background: "#ffffff",
-    color: "#111827",
-    borderColor: "rgba(0, 0, 0, 0.12)",
+    background: "var(--color-bg-surface)",
+    color: "var(--color-text-strong)",
+    borderColor: "var(--color-border-soft)",
   },
 };
 
