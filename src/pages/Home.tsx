@@ -26,8 +26,8 @@ export default function Home() {
           style={{
             borderRadius: "32px",
             background:
-              "linear-gradient(135deg, rgba(100, 108, 255, 0.12), rgba(100, 108, 255, 0.03))",
-            border: "1px solid rgba(0, 0, 0, 0.08)",
+              "linear-gradient(135deg, var(--color-bg-brand-gradient-start), var(--color-bg-brand-gradient-end))",
+            border: "1px solid var(--color-border-subtle)",
           }}
         >
           <Boxed maxWidth="md" padding="none" gap="md" centered={false}>
@@ -37,7 +37,7 @@ export default function Home() {
                 fontWeight: 700,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                color: "#646cff",
+                color: "var(--color-brand-500)",
               }}
             >
               Por uma Porto Alegre antirracista, feminista e com justiça social
@@ -45,7 +45,7 @@ export default function Home() {
 
             <Title level={1}>Pérola Sampaio</Title>
 
-            <p style={{ margin: 0, fontSize: "1.1rem", color: "#4b5563" }}>
+            <p style={{ margin: 0, fontSize: "1.1rem", color: "var(--color-text-muted)" }}>
               Um projeto político construído com participação popular, compromisso
               com os territórios e defesa inegociável da dignidade do nosso povo.
             </p>
@@ -60,8 +60,8 @@ export default function Home() {
                   minHeight: "44px",
                   padding: "0 18px",
                   borderRadius: "9999px",
-                  background: "#646cff",
-                  color: "#ffffff",
+                  background: "var(--color-brand-500)",
+                  color: "var(--color-text-on-brand)",
                   textDecoration: "none",
                   fontWeight: 700,
                 }}
@@ -78,9 +78,9 @@ export default function Home() {
                   minHeight: "44px",
                   padding: "0 18px",
                   borderRadius: "9999px",
-                  background: "#ffffff",
-                  color: "#111827",
-                  border: "1px solid rgba(0, 0, 0, 0.12)",
+                  background: "var(--color-bg-surface)",
+                  color: "var(--color-text-strong)",
+                  border: "1px solid var(--color-border-soft)",
                   textDecoration: "none",
                   fontWeight: 700,
                 }}
@@ -107,7 +107,7 @@ export default function Home() {
         <Boxed maxWidth="xl" padding="none" gap="lg">
           <Boxed padding="none" gap="sm">
             <Title level={2}>Prioridades do projeto</Title>
-            <p style={{ margin: 0, color: "#4b5563" }}>
+            <p style={{ margin: 0, color: "var(--color-text-muted)" }}>
               Um mandato comprometido com quem vive a cidade de verdade, com foco
               em políticas públicas que transformem a vida nas periferias e nos
               territórios populares.
@@ -123,13 +123,13 @@ export default function Home() {
                 gap="xs"
                 style={{
                   flex: "1 1 220px",
-                  border: "1px solid rgba(0, 0, 0, 0.08)",
+                  border: "1px solid var(--color-border-subtle)",
                   borderRadius: "20px",
-                  background: "#ffffff",
+                  background: "var(--color-bg-surface)",
                 }}
               >
                 <strong style={{ fontSize: "1rem", lineHeight: 1.4 }}>{item}</strong>
-                <p style={{ margin: 0, color: "#6b7280" }}>
+                <p style={{ margin: 0, color: "var(--color-text-subtle)" }}>
                   Compromisso com uma cidade mais humana, democrática e igualitária.
                 </p>
               </Boxed>
@@ -146,9 +146,9 @@ export default function Home() {
           maxWidth="xl"
           gap="lg"
           style={{
-            border: "1px solid rgba(0, 0, 0, 0.08)",
+            border: "1px solid var(--color-border-subtle)",
             borderRadius: "24px",
-            background: "rgba(255, 255, 255, 0.9)",
+            background: "var(--color-bg-surface-overlay)",
           }}
         >
           <Title level={2}>Como esse projeto se constrói</Title>
@@ -171,8 +171,8 @@ export default function Home() {
                     width: "32px",
                     height: "32px",
                     borderRadius: "9999px",
-                    background: "rgba(100, 108, 255, 0.12)",
-                    color: "#646cff",
+                    background: "var(--color-bg-brand-soft-strong)",
+                    color: "var(--color-brand-500)",
                     fontWeight: 800,
                     flexShrink: 0,
                   }}
@@ -180,7 +180,7 @@ export default function Home() {
                   {index + 1}
                 </span>
 
-                <p style={{ margin: 0, color: "#374151" }}>{item}</p>
+                <p style={{ margin: 0, color: "var(--color-text-body)" }}>{item}</p>
               </Boxed>
             ))}
           </Boxed>
@@ -215,7 +215,7 @@ export default function Home() {
 }
 
 const pillStyle = {
-  border: "1px solid rgba(100, 108, 255, 0.35)",
+  border: "1px solid var(--color-border-brand-soft)",
   borderRadius: "9999px",
   padding: "6px 12px",
   fontSize: "0.85rem",

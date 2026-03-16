@@ -55,9 +55,9 @@ function ActivistRegister() {
         maxWidth="sm"
         gap="md"
         style={{
-          border: "1px solid rgba(0, 0, 0, 0.08)",
+          border: "1px solid var(--color-border-subtle)",
           borderRadius: "24px",
-          background: "#ffffff",
+          background: "var(--color-bg-surface)",
         }}
       >
         <Title level={1}>Cadastro de Ativista</Title>
@@ -142,7 +142,7 @@ function ActivistRegister() {
           {errorMessage ? (
             <>
               <Spacing size="sm" />
-              <p style={{ color: "#b91c1c", fontWeight: 600 }}>{errorMessage}</p>
+              <p style={{ color: "var(--color-feedback-error)", fontWeight: 600 }}>{errorMessage}</p>
             </>
           ) : null}
         </form>

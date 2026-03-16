@@ -6,10 +6,14 @@
 	--color-text-primary: #213547;
 	--color-text-strong: #111827;
 	--color-text-muted: #4b5563;
+	--color-text-subtle: #6b7280;
+	--color-text-body: #374151;
 	--color-text-on-brand: #ffffff;
+	--color-feedback-error: #b91c1c;
 
 	--color-bg-page: #f9f9fb;
 	--color-bg-surface: #ffffff;
+	--color-bg-surface-overlay: rgba(255, 255, 255, 0.9);
 	--color-bg-surface-soft: rgba(255, 255, 255, 0.96);
 	--color-bg-neutral: #f3f4f6;
 
@@ -22,6 +26,7 @@
 
 	--color-bg-brand-soft: rgba(100, 108, 255, 0.04);
 	--color-bg-brand-soft-strong: rgba(100, 108, 255, 0.12);
+	--color-bg-brand-gradient-start-soft: rgba(100, 108, 255, 0.1);
 	--color-bg-brand-gradient-start: rgba(100, 108, 255, 0.12);
 	--color-bg-brand-gradient-end: rgba(100, 108, 255, 0.03);
 }

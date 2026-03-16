@@ -15,8 +15,8 @@ export default function SejaAtivista() {
           gap="sm"
           style={{
             borderRadius: "24px",
-            border: "1px solid rgba(0, 0, 0, 0.08)",
-            background: "linear-gradient(135deg, rgba(100, 108, 255, 0.12), rgba(100, 108, 255, 0.03))",
+            border: "1px solid var(--color-border-subtle)",
+            background: "linear-gradient(135deg, var(--color-bg-brand-gradient-start), var(--color-bg-brand-gradient-end))",
           }}
         >
           <Title level={1}>Seja Ativista</Title>
@@ -30,8 +30,8 @@ export default function SejaAtivista() {
           gap="md"
           style={{
             borderRadius: "24px",
-            border: "1px solid rgba(0, 0, 0, 0.08)",
-            background: "#ffffff",
+            border: "1px solid var(--color-border-subtle)",
+            background: "var(--color-bg-surface)",
           }}
         >
           <Title level={2}>Como participar</Title>
@@ -43,8 +43,8 @@ export default function SejaAtivista() {
                     width: "32px",
                     height: "32px",
                     borderRadius: "9999px",
-                    background: "rgba(100, 108, 255, 0.12)",
-                    color: "#646cff",
+                    background: "var(--color-bg-brand-soft-strong)",
+                    color: "var(--color-brand-500)",
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -13,9 +13,9 @@ function ActivistLanding() {
         <Boxed
           gap="sm"
           style={{
-            border: "1px solid rgba(0, 0, 0, 0.08)",
+            border: "1px solid var(--color-border-subtle)",
             borderRadius: "20px",
-            background: "#ffffff",
+            background: "var(--color-bg-surface)",
           }}
         >
           <Title level={3}>Já possui conta?</Title>
@@ -30,9 +30,9 @@ function ActivistLanding() {
         <Boxed
           gap="sm"
           style={{
-            border: "1px solid rgba(0, 0, 0, 0.08)",
+            border: "1px solid var(--color-border-subtle)",
             borderRadius: "20px",
-            background: "#ffffff",
+            background: "var(--color-bg-surface)",
           }}
         >
           <Title level={3}>Novo por aqui?</Title>

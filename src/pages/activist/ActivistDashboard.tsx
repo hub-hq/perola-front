@@ -16,9 +16,9 @@ function ActivistDashboard() {
         maxWidth="md"
         gap="md"
         style={{
-          border: "1px solid rgba(0, 0, 0, 0.08)",
+          border: "1px solid var(--color-border-subtle)",
           borderRadius: "24px",
-          background: "#ffffff",
+          background: "var(--color-bg-surface)",
         }}
       >
         <Title level={1}>Dashboard do Ativista</Title>

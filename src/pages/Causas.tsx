@@ -40,9 +40,9 @@ export default function Causas() {
         <Boxed
           gap="sm"
           style={{
-            border: "1px solid rgba(0, 0, 0, 0.08)",
+            border: "1px solid var(--color-border-subtle)",
             borderRadius: "24px",
-            background: "linear-gradient(135deg, rgba(100, 108, 255, 0.1), rgba(100, 108, 255, 0.03))",
+            background: "linear-gradient(135deg, var(--color-bg-brand-gradient-start-soft), var(--color-bg-brand-gradient-end))",
           }}
         >
           <Title level={1}>Causas que movem nossa caminhada</Title>
@@ -62,13 +62,13 @@ export default function Causas() {
               gap="xs"
               style={{
                 flex: "1 1 280px",
-                border: "1px solid rgba(0, 0, 0, 0.08)",
+                border: "1px solid var(--color-border-subtle)",
                 borderRadius: "18px",
-                background: "#ffffff",
+                background: "var(--color-bg-surface)",
               }}
             >
               <Title level={3}>{cause.title}</Title>
-              <p style={{ color: "#4b5563" }}>{cause.description}</p>
+              <p style={{ color: "var(--color-text-muted)" }}>{cause.description}</p>
             </Boxed>
           ))}
         </Boxed>
