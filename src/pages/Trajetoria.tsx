@@ -80,30 +80,55 @@ export default function Trajetoria() {
         </Boxed>
 
         <Boxed padding="none" gap="md">
-          {milestones.map((item) => (
+          {milestones.map((item, index) => (
             <Boxed
               key={`${item.year}-${item.title}`}
               direction="row"
               align="stretch"
               gap="md"
-              style={{
-                border: "1px solid var(--color-border-subtle)",
-                borderRadius: "20px",
-                background: "var(--color-surface-base)",
-              }}
+              style={{ width: "100%" }}
             >
               <Boxed
-                maxWidth="xs"
                 centered={false}
+                align="center"
                 gap="xs"
                 style={{
-                  minWidth: "140px",
-                  borderRight: "1px solid var(--color-border-subtle)",
+                  width: "72px",
+                  flex: "0 0 72px",
+                  position: "relative",
+                  paddingTop: "6px",
                 }}
               >
-                <strong style={{ color: "var(--color-brand-primary)", fontSize: "1.4rem" }}>
-                  {item.year}
-                </strong>
+                {index > 0 ? (
+                  <span
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      top: 0,
+                      height: "50%",
+                      width: "2px",
+                      transform: "translateX(-50%)",
+                      background: "var(--color-border-accent)",
+                    }}
+                    aria-hidden
+                  />
+                ) : null}
+
+                {index < milestones.length - 1 ? (
+                  <span
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      bottom: 0,
+                      height: "50%",
+                      width: "2px",
+                      transform: "translateX(-50%)",
+                      background: "var(--color-border-accent)",
+                    }}
+                    aria-hidden
+                  />
+                ) : null}
+
                 <span
                   style={{
                     display: "inline-flex",
@@ -112,30 +137,48 @@ export default function Trajetoria() {
                     borderRadius: "9999px",
                     alignItems: "center",
                     justifyContent: "center",
+                    border: "2px solid var(--color-border-accent)",
                     background: "var(--color-accent-soft-strong)",
                     fontSize: "1.15rem",
+                    zIndex: 1,
                   }}
                   aria-hidden
                 >
                   {item.icon}
                 </span>
-                <span
-                  style={{
-                    display: "inline-flex",
-                    border: "1px solid var(--color-border-accent)",
-                    borderRadius: "9999px",
-                    padding: "4px 10px",
-                    fontSize: "0.78rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {item.badge}
-                </span>
+
+                <strong style={{ color: "var(--color-brand-primary)", fontSize: "1rem" }}>
+                  {item.year}
+                </strong>
               </Boxed>
 
-              <Boxed centered={false} gap="xs" style={{ flex: 1 }}>
-                <Title level={3}>{item.title}</Title>
+              <Boxed
+                centered={false}
+                gap="xs"
+                style={{
+                  flex: 1,
+                  border: "1px solid var(--color-border-subtle)",
+                  borderRadius: "20px",
+                  background: "var(--color-surface-base)",
+                }}
+              >
+                <Boxed direction="row" align="center" justify="between" wrap gap="xs" padding="none">
+                  <Title level={3}>{item.title}</Title>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      border: "1px solid var(--color-border-accent)",
+                      borderRadius: "9999px",
+                      padding: "4px 10px",
+                      fontSize: "0.78rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {item.badge}
+                  </span>
+                </Boxed>
+
                 <p style={{ color: "var(--color-text-secondary)" }}>{item.description}</p>
 
                 <Boxed
@@ -145,7 +188,7 @@ export default function Trajetoria() {
                     borderRadius: "12px",
                     border: "1px dashed var(--color-border-soft)",
                     background: "var(--color-surface-soft)",
-                    maxWidth: "220px",
+                    maxWidth: "260px",
                   }}
                 >
                   <small style={{ color: "var(--color-text-tertiary)" }}>
