@@ -45,7 +45,8 @@ export function Timeline({ milestones }: TimelineProps) {
               className={styles.node}
               style={{
                 border: "2px solid var(--color-border-accent)",
-                background: "var(--color-accent-soft-strong)",
+                background:
+                  "linear-gradient(var(--color-accent-soft-strong), var(--color-accent-soft-strong)), var(--color-surface-base)",
               }}
               aria-hidden
             >
