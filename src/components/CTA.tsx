@@ -61,7 +61,7 @@ export function CTA({
   title = "Quer fazer parte dessa construção?",
   description = "Apoie, acompanhe as pautas e participe de uma campanha feita com diálogo, participação popular e justiça social.",
   actions = [
-    { label: "Quero apoiar", href: "/seja-ativista", variant: "primary" },
+    { label: "Quero apoiar", href: "/seja-apoiador", variant: "primary" },
     { label: "Conheça a trajetória", href: "/sobre", variant: "secondary" },
   ],
 }: CTAProps) {

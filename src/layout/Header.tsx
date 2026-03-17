@@ -48,6 +48,9 @@ export function Header() {
               <Link to="/seja-ativista" style={navItemStyle}>
                 Seja Ativista
               </Link>
+              <Link to="/seja-apoiador" style={navItemStyle}>
+                Seja Apoiador
+              </Link>
               <Link to="/politica-privacidade" style={navItemStyle}>
                 Privacidade
               </Link>
@@ -72,7 +75,7 @@ export function Header() {
             mulheres, inclusão social e participação popular.
           </p>
           <Boxed direction="row" gap="sm" wrap padding="none">
-            <Link to="/seja-ativista">Quero apoiar</Link>
+            <Link to="/seja-apoiador">Quero apoiar</Link>
             <Link to="/trajetoria">Conheça a trajetória</Link>
           </Boxed>
         </Boxed>

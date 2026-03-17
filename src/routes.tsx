@@ -7,6 +7,7 @@ import Sobre from "@/pages/Sobre";
 import Causas from "@/pages/Causas";
 import Trajetoria from "@/pages/Trajetoria";
 import SejaAtivista from "@/pages/SejaAtivista";
+import SejaApoiador from "@/pages/SejaApoiador";
 import PrivacyPolicy from "@/pages/PoliticaPrivacidade";
 
 // Páginas do ativista
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
       { path: "/causas", element: <Causas /> },
       { path: "/politica-privacidade", element: <PrivacyPolicy /> },
       { path: "/seja-ativista", element: <SejaAtivista /> },
+      { path: "/seja-apoiador", element: <SejaApoiador /> },
       { path: "/ativista", element: <ActivistLanding /> },
     ],
   },
@@ -35,6 +37,8 @@ export const router = createBrowserRouter([
     children: [
       { path: "/ativista/cadastro", element: <Register /> },
       { path: "/ativista/login", element: <Login /> },
+      { path: "/apoiador/cadastro", element: <Register /> },
+      { path: "/apoiador/login", element: <Login /> },
     ],
   },
   {
