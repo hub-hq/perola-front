@@ -1,9 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "@/layout/MainLayout";
 import { AuthLayout } from "@/layout/AuthLayout";
 
 import Home from "@/pages/Home";
 import Sobre from "@/pages/Sobre";
+import Login from "@/pages/Login";
 import Causas from "@/pages/Causas";
 import Trajetoria from "@/pages/Trajetoria";
 import SejaAtivista from "@/pages/SejaAtivista";
@@ -11,12 +12,17 @@ import SejaApoiador from "@/pages/SejaApoiador";
 import PrivacyPolicy from "@/pages/PoliticaPrivacidade";
 
 // Páginas do ativista
-import Login from "@/pages/Login";
-import ActivistRegister from "@/pages/ActivistRegister";
-import SupporterRegister from "@/pages/SupporterRegister";
-import SupporterLogin from "@/pages/SupporterLogin";
-import ActivistLanding from "@/pages/activist/ActivistLanding";
-import ActivistDashboard from "@/pages/activist/ActivistDashboard";
+import ActivistLogin from "@/pages/activist/ActivistLogin";
+import ActivistRegister from "@/pages/activist/ActivistRegister";
+import ActivistMemberDashboard from "@/pages/activist/ActivistMemberDashboard";
+
+// Páginas do apoiador
+import SupporterLogin from "@/pages/supporter/SupporterLogin";
+import SupporterRegister from "@/pages/supporter/SupporterRegister";
+import SupporterDashboard from "@/pages/supporter/SupporterDashboard";
+
+// Páginas do admin
+import AdminDashboard from "@/pages/admin/AdminDashboard";
 
 import { ProtectedRoute } from "./protected-route";
 
@@ -31,14 +37,15 @@ export const router = createBrowserRouter([
       { path: "/politica-privacidade", element: <PrivacyPolicy /> },
       { path: "/seja-ativista", element: <SejaAtivista /> },
       { path: "/seja-apoiador", element: <SejaApoiador /> },
-      { path: "/ativista", element: <ActivistLanding /> },
     ],
   },
   {
     element: <AuthLayout />,
     children: [
+      { path: "/login", element: <Login /> },
+      { path: "/admin/login", element: <Navigate to="/login" replace /> },
       { path: "/ativista/cadastro", element: <ActivistRegister /> },
-      { path: "/ativista/login", element: <Login /> },
+      { path: "/ativista/login", element: <ActivistLogin /> },
       { path: "/apoiador/cadastro", element: <SupporterRegister /> },
       { path: "/apoiador/login", element: <SupporterLogin /> },
     ],
@@ -46,15 +53,33 @@ export const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [
-      { path: "/ativista/home", element: <ActivistDashboard /> },
+      {
+        path: "/admin/dashboard",
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "/ativista/dashboard",
         element: (
           <ProtectedRoute>
-            <ActivistDashboard />
+            <ActivistMemberDashboard />
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/apoiador/dashboard",
+        element: (
+          <ProtectedRoute>
+            <SupporterDashboard />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "/admin/home", element: <Navigate to="/admin/dashboard" replace /> },
+      { path: "/ativista/home", element: <Navigate to="/ativista/dashboard" replace /> },
+      { path: "/apoiador/home", element: <Navigate to="/apoiador/dashboard" replace /> },
     ],
   },
 ]);

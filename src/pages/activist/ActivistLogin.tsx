@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Boxed, Button, EmailInput, PasswordInput, Spacing, Title } from "@/components";
-import { login } from "@/services/auth";
+import { canUseMockSession, login, startMockActivistSession } from "@/services/auth";
 
-function SupporterLogin() {
+function ActivistLogin() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -20,12 +20,17 @@ function SupporterLogin() {
 
     try {
       await login({ email, password });
-      navigate("/");
+      navigate("/ativista/dashboard");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel fazer login.");
     } finally {
       setIsLoading(false);
     }
+  }
+
+  function handleMockLogin() {
+    const started = startMockActivistSession();
+    if (started) navigate("/ativista/dashboard");
   }
 
   return (
@@ -39,16 +44,16 @@ function SupporterLogin() {
           background: "var(--color-surface-base)",
         }}
       >
-        <Title level={1}>Entrar como Apoiador</Title>
-        <p>Acesse sua conta de apoiador para atualizar seus dados.</p>
+        <Title level={1}>Entrar como Ativista</Title>
+        <p>Acesse sua conta de ativista.</p>
 
         <Spacing size="sm" />
 
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="supporter-login-email">E-mail</label>
+          <label htmlFor="activist-login-email">E-mail</label>
           <Spacing size="xs" />
           <EmailInput
-            id="supporter-login-email"
+            id="activist-login-email"
             name="email"
             autoComplete="email"
             placeholder="seuemail@exemplo.com"
@@ -57,10 +62,10 @@ function SupporterLogin() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-login-password">Senha</label>
+          <label htmlFor="activist-login-password">Senha</label>
           <Spacing size="xs" />
           <PasswordInput
-            id="supporter-login-password"
+            id="activist-login-password"
             name="password"
             autoComplete="current-password"
             placeholder="Sua senha"
@@ -83,12 +88,26 @@ function SupporterLogin() {
 
         <Spacing size="md" />
 
+        {canUseMockSession() ? (
+          <>
+            <Button type="button" variant="secondary" fullWidth onClick={handleMockLogin}>
+              Entrar com usuario fake (dev)
+            </Button>
+            <Spacing size="xs" />
+            <small style={{ color: "var(--color-text-tertiary)" }}>
+              Cria uma sessao mock para simular login de ativista.
+            </small>
+          </>
+        ) : null}
+
+        <Spacing size="md" />
+
         <p>
-          Ainda nao tem conta? <Link to="/apoiador/cadastro">Cadastre-se</Link>.
+          Ainda nao tem conta? <Link to="/ativista/cadastro">Cadastre-se</Link>.
         </p>
       </Boxed>
     </main>
   );
 }
 
-export default SupporterLogin;
+export default ActivistLogin;

@@ -4,7 +4,7 @@ import { Boxed, Button, Spacing, Title } from "@/components";
 import { getAuthenticatedUser, logout } from "@/services/auth";
 import { getReferralMetrics, type ReferralMetricsResponse } from "@/services/supporters";
 
-function ActivistDashboard() {
+function AdminDashboard() {
   const navigate = useNavigate();
   const authenticatedUser = getAuthenticatedUser();
   const isMockSession = authenticatedUser?.isMock === true;
@@ -54,8 +54,8 @@ function ActivistDashboard() {
           background: "var(--color-surface-base)",
         }}
       >
-        <Title level={1}>Dashboard do Ativista</Title>
-        <p>Bem-vindo(a)! Esta é sua área para acompanhar e fortalecer as ações da campanha.</p>
+        <Title level={1}>Dashboard Administrativo</Title>
+        <p>Bem-vindo(a)! Esta e a area administrativa para acompanhar os indicadores da campanha.</p>
 
         {isMockSession ? (
           <Boxed
@@ -200,4 +200,4 @@ function ActivistDashboard() {
   );
 }
 
-export default ActivistDashboard;
+export default AdminDashboard;

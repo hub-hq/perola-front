@@ -1,16 +1,9 @@
 import { useState, type FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Boxed,
-  Button,
-  EmailInput,
-  PasswordInput,
-  Spacing,
-  Title,
-} from "@/components";
-import { canUseMockSession, login, startMockActivistSession } from "@/services/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { Boxed, Button, EmailInput, PasswordInput, Spacing, Title } from "@/components";
+import { login } from "@/services/auth";
 
-function Login() {
+function SupporterLogin() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,19 +20,12 @@ function Login() {
 
     try {
       await login({ email, password });
-      navigate("/admin/dashboard");
+      navigate("/apoiador/dashboard");
     } catch (error) {
-      setErrorMessage(
-        error instanceof Error ? error.message : "Não foi possível fazer login.",
-      );
+      setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel fazer login.");
     } finally {
       setIsLoading(false);
     }
-  }
-
-  function handleMockLogin() {
-    const started = startMockActivistSession();
-    if (started) navigate("/admin/dashboard");
   }
 
   return (
@@ -53,16 +39,16 @@ function Login() {
           background: "var(--color-surface-base)",
         }}
       >
-        <Title level={1}>Entrar como Admin</Title>
-        <p>Acesse sua conta administrativa.</p>
+        <Title level={1}>Entrar como Apoiador</Title>
+        <p>Acesse sua conta de apoiador para atualizar seus dados.</p>
 
         <Spacing size="sm" />
 
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="admin-login-email">E-mail</label>
+          <label htmlFor="supporter-login-email">E-mail</label>
           <Spacing size="xs" />
           <EmailInput
-            id="admin-login-email"
+            id="supporter-login-email"
             name="email"
             autoComplete="email"
             placeholder="seuemail@exemplo.com"
@@ -71,10 +57,10 @@ function Login() {
 
           <Spacing size="md" />
 
-          <label htmlFor="admin-login-password">Senha</label>
+          <label htmlFor="supporter-login-password">Senha</label>
           <Spacing size="xs" />
           <PasswordInput
-            id="admin-login-password"
+            id="supporter-login-password"
             name="password"
             autoComplete="current-password"
             placeholder="Sua senha"
@@ -97,18 +83,12 @@ function Login() {
 
         <Spacing size="md" />
 
-        {canUseMockSession() ? (
-          <>
-            <Button type="button" variant="secondary" fullWidth onClick={handleMockLogin}>
-              Entrar com usuario fake (dev)
-            </Button>
-            <Spacing size="xs" />
-            <small style={{ color: "var(--color-text-tertiary)" }}>Cria uma sessao mock para simular login de admin.</small>
-          </>
-        ) : null}
+        <p>
+          Ainda nao tem conta? <Link to="/apoiador/cadastro">Cadastre-se</Link>.
+        </p>
       </Boxed>
     </main>
   );
 }
 
-export default Login;
+export default SupporterLogin;

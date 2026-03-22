@@ -106,7 +106,7 @@ function SupporterRegister() {
         isPtMember,
         isMilitant,
       });
-      navigate("/");
+      navigate("/apoiador/dashboard");
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel criar a conta.");
     } finally {
