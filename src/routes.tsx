@@ -12,7 +12,9 @@ import PrivacyPolicy from "@/pages/PoliticaPrivacidade";
 
 // Páginas do ativista
 import Login from "@/pages/Login";
-import Register from "@/pages/Register";
+import ActivistRegister from "@/pages/ActivistRegister";
+import SupporterRegister from "@/pages/SupporterRegister";
+import SupporterLogin from "@/pages/SupporterLogin";
 import ActivistLanding from "@/pages/activist/ActivistLanding";
 import ActivistDashboard from "@/pages/activist/ActivistDashboard";
 
@@ -35,10 +37,10 @@ export const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [
-      { path: "/ativista/cadastro", element: <Register /> },
+      { path: "/ativista/cadastro", element: <ActivistRegister /> },
       { path: "/ativista/login", element: <Login /> },
-      { path: "/apoiador/cadastro", element: <Register /> },
-      { path: "/apoiador/login", element: <Login /> },
+      { path: "/apoiador/cadastro", element: <SupporterRegister /> },
+      { path: "/apoiador/login", element: <SupporterLogin /> },
     ],
   },
   {
