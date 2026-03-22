@@ -61,23 +61,23 @@ function SupporterRegister() {
     const nextFieldErrors: Partial<Record<SupporterField, string>> = {};
 
     if (!isValidName(name)) {
-      nextFieldErrors.name = "Nome invalido. Informe nome e sobrenome.";
+      nextFieldErrors.name = "Nome inválido. Informe nome e sobrenome.";
     }
 
     if (!isValidEmail(email)) {
-      nextFieldErrors.email = "E-mail invalido. Use um formato como nome@dominio.com.";
+      nextFieldErrors.email = "E-mail inválido. Use um formato como nome@domínio.com.";
     }
 
     if (!isValidBrazilianPhone(phone)) {
-      nextFieldErrors.phone = "Celular invalido. Use DDD + numero (10 ou 11 digitos).";
+      nextFieldErrors.phone = "Celular inválido. Use DDD + número (10 ou 11 dígitos).";
     }
 
     if (referredByActivistCode && !isValidActivistCode(referredByActivistCode)) {
-      nextFieldErrors.referredByActivistCode = "Codigo de ativista invalido. Exemplo: ATIV-2041.";
+      nextFieldErrors.referredByActivistCode = "Código de ativista inválido. Exemplo: ATIV-2041.";
     }
 
     if (password !== confirmPassword) {
-      nextFieldErrors.confirmPassword = "As senhas nao conferem.";
+      nextFieldErrors.confirmPassword = "As senhas não conferem.";
     }
 
     if (Object.keys(nextFieldErrors).length > 0) {
@@ -107,7 +107,7 @@ function SupporterRegister() {
       });
       navigate("/apoiador/dashboard");
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel criar a conta.");
+      setErrorMessage(error instanceof Error ? error.message : "Não foi possível criar a conta.");
     } finally {
       setIsLoading(false);
     }
@@ -115,7 +115,7 @@ function SupporterRegister() {
 
   return (
     <main className="auth-form-page">
-      <ToastAlert message={errorMessage} title="Nao foi possivel continuar" onClose={() => setErrorMessage("")} />
+      <ToastAlert message={errorMessage} title="Não foi possível continuar" onClose={() => setErrorMessage("")} />
 
       <Boxed
         maxWidth="sm"
@@ -127,7 +127,7 @@ function SupporterRegister() {
         }}
       >
         <Title level={1}>Cadastro de Apoiador</Title>
-        <p>Dados basicos para contato e relacionamento com a campanha.</p>
+        <p>Dados básicos para contato e relacionamento com a campanha.</p>
 
         <Spacing size="sm" />
 
@@ -180,7 +180,7 @@ function SupporterRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-region">Area/Bairro</label>
+          <label htmlFor="supporter-register-region">Área e bairro</label>
           <Spacing size="xs" />
           <LabelInput id="supporter-register-region" name="region" placeholder="Ex.: Zona Sul" required />
 
@@ -192,20 +192,20 @@ function SupporterRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-area">Area de atuacao</label>
+          <label htmlFor="supporter-register-area">Área de atuação</label>
           <Spacing size="xs" />
           <LabelInput
             id="supporter-register-area"
             name="areaOfAction"
-            placeholder="Ex.: SUS, movimento negro, cultura, educacao"
+            placeholder="Ex.: SUS, movimento negro, cultura, educação"
             required
           />
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-role">Cargo/funcao</label>
+          <label htmlFor="supporter-register-role">Cargo ou função</label>
           <Spacing size="xs" />
-          <LabelInput id="supporter-register-role" name="role" placeholder="Ex.: professora, agente de saude" required />
+          <LabelInput id="supporter-register-role" name="role" placeholder="Ex.: professora, agente de saúde" required />
 
           <Spacing size="md" />
 
@@ -235,13 +235,13 @@ function SupporterRegister() {
 
           <Spacing size="sm" />
 
-          <label htmlFor="supporter-register-party">Filiacao partidaria</label>
+          <label htmlFor="supporter-register-party">Filiação partidária</label>
           <Spacing size="xs" />
-          <LabelInput id="supporter-register-party" name="party" placeholder="Ex.: PT, PSOL, sem filiacao" />
+          <LabelInput id="supporter-register-party" name="party" placeholder="Ex.: PT, PSOL, sem filiação" />
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-code">Codigo do ativista que indicou</label>
+          <label htmlFor="supporter-register-code">Código do ativista que indicou</label>
           <Spacing size="xs" />
           <ActivistCodeInput
             id="supporter-register-code"
@@ -256,21 +256,21 @@ function SupporterRegister() {
 
           <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="supporter-register-pt-member" name="isPtMember" />
-            <label htmlFor="supporter-register-pt-member">Ja sou filiado(a) ao PT</label>
+            <label htmlFor="supporter-register-pt-member">Já sou filiado(a) ao PT</label>
           </Boxed>
 
           <Spacing size="xs" />
 
           <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="supporter-register-militant" name="isMilitant" />
-            <label htmlFor="supporter-register-militant">Ja atuo como militante</label>
+            <label htmlFor="supporter-register-militant">Já atuo como militante</label>
           </Boxed>
 
           <Spacing size="md" />
 
           <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="supporter-register-terms" name="terms" required />
-            <label htmlFor="supporter-register-terms">Li e aceito os termos de uso e politica de privacidade.</label>
+            <label htmlFor="supporter-register-terms">Li e aceito os termos de uso e política de privacidade.</label>
           </Boxed>
 
           <Spacing size="lg" />
@@ -283,7 +283,7 @@ function SupporterRegister() {
         <Spacing size="md" />
 
         <p>
-          Ja possui conta? <Link to="/apoiador/login">Entrar</Link>.
+          Já possui conta? <Link to="/apoiador/login">Entrar</Link>.
         </p>
       </Boxed>
     </main>

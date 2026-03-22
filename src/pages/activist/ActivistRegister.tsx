@@ -59,33 +59,32 @@ function ActivistRegister() {
     const leadershipLevel = String(formData.get("leadershipLevel") ?? "").trim();
     const locality = String(formData.get("locality") ?? "").trim();
     const instagram = String(formData.get("instagram") ?? "").trim();
-    const linkedin = String(formData.get("linkedin") ?? "").trim();
     const activistCode = String(formData.get("activistCode") ?? "").trim();
 
     const nextFieldErrors: Partial<Record<ActivistField, string>> = {};
 
     if (!isValidName(name)) {
-      nextFieldErrors.name = "Nome invalido. Informe nome e sobrenome.";
+      nextFieldErrors.name = "Nome inválido. Informe nome e sobrenome.";
     }
 
     if (!isValidCpf(cpf)) {
-      nextFieldErrors.cpf = "CPF invalido. Verifique os digitos e tente novamente.";
+      nextFieldErrors.cpf = "CPF inválido. Verifique os dígitos e tente novamente.";
     }
 
     if (!isValidEmail(email)) {
-      nextFieldErrors.email = "E-mail invalido. Use um formato como nome@dominio.com.";
+      nextFieldErrors.email = "E-mail inválido. Use um formato como nome@domínio.com.";
     }
 
     if (!isValidBrazilianPhone(phone)) {
-      nextFieldErrors.phone = "Celular invalido. Use DDD + numero (10 ou 11 digitos).";
+      nextFieldErrors.phone = "Celular inválido. Use DDD + número (10 ou 11 dígitos).";
     }
 
     if (activistCode && !isValidActivistCode(activistCode)) {
-      nextFieldErrors.activistCode = "Codigo de indicacao invalido. Exemplo: ATIV-2041.";
+      nextFieldErrors.activistCode = "Código de indicação inválido. Exemplo: ATIV-2041.";
     }
 
     if (password !== confirmPassword) {
-      nextFieldErrors.confirmPassword = "As senhas nao conferem.";
+      nextFieldErrors.confirmPassword = "As senhas não conferem.";
     }
 
     if (Object.keys(nextFieldErrors).length > 0) {
@@ -112,12 +111,11 @@ function ActivistRegister() {
         leadershipLevel: leadershipLevel || undefined,
         locality: locality || undefined,
         instagram: instagram || undefined,
-        linkedin: linkedin || undefined,
         activistCode: activistCode || undefined,
       });
       navigate("/ativista/dashboard");
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel criar a conta.");
+      setErrorMessage(error instanceof Error ? error.message : "Não foi possível criar a conta.");
     } finally {
       setIsLoading(false);
     }
@@ -125,7 +123,7 @@ function ActivistRegister() {
 
   return (
     <main className="auth-form-page">
-      <ToastAlert message={errorMessage} title="Nao foi possivel continuar" onClose={() => setErrorMessage("")} />
+      <ToastAlert message={errorMessage} title="Não foi possível continuar" onClose={() => setErrorMessage("")} />
 
       <Boxed
         maxWidth="sm"
@@ -137,7 +135,7 @@ function ActivistRegister() {
         }}
       >
         <Title level={1}>Cadastro de Ativista</Title>
-        <p>Perfil de lideranca para mobilizacao territorial.</p>
+        <p>Perfil de liderança para mobilização territorial.</p>
 
         <Spacing size="sm" />
 
@@ -210,26 +208,26 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-region">Regiao/Bairro de atuacao</label>
+          <label htmlFor="activist-register-region">Região/Bairro de atuação</label>
           <Spacing size="xs" />
           <LabelInput id="activist-register-region" name="region" placeholder="Ex.: Zona Norte" required />
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-area">Area de atuacao</label>
+          <label htmlFor="activist-register-area">Área de atuação</label>
           <Spacing size="xs" />
           <LabelInput
             id="activist-register-area"
             name="areaOfAction"
-            placeholder="Ex.: SUS, movimento negro, educacao, juventude"
+            placeholder="Ex.: SUS, movimento negro, educação, juventude"
             required
           />
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-role">Cargo/funcao</label>
+          <label htmlFor="activist-register-role">Cargo/função</label>
           <Spacing size="xs" />
-          <LabelInput id="activist-register-role" name="role" placeholder="Ex.: lideranca comunitaria" required />
+          <LabelInput id="activist-register-role" name="role" placeholder="Ex.: liderança comunitária" required />
 
           <Spacing size="md" />
 
@@ -259,7 +257,7 @@ function ActivistRegister() {
 
           <Spacing size="sm" />
 
-          <label htmlFor="activist-register-leadership-level">Nivel de lideranca</label>
+          <label htmlFor="activist-register-leadership-level">Nível de liderança</label>
           <Spacing size="xs" />
           <SelectInput id="activist-register-leadership-level" name="leadershipLevel" defaultValue="">
             <option value="">Selecione (opcional)</option>
@@ -283,13 +281,7 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-linkedin">LinkedIn</label>
-          <Spacing size="xs" />
-          <LabelInput id="activist-register-linkedin" name="linkedin" placeholder="linkedin.com/in/..." />
-
-          <Spacing size="md" />
-
-          <label htmlFor="activist-register-code">Codigo de ativista que indicou</label>
+          <label htmlFor="activist-register-code">Código de ativista que indicou</label>
           <Spacing size="xs" />
           <ActivistCodeInput
             id="activist-register-code"
@@ -304,7 +296,7 @@ function ActivistRegister() {
 
           <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="activist-register-terms" name="terms" required />
-            <label htmlFor="activist-register-terms">Li e aceito os termos de uso e politica de privacidade.</label>
+            <label htmlFor="activist-register-terms">Li e aceito os termos de uso e política de privacidade.</label>
           </Boxed>
 
           <Spacing size="lg" />
@@ -317,7 +309,7 @@ function ActivistRegister() {
         <Spacing size="md" />
 
         <p>
-          Ja possui conta? <Link to="/ativista/login">Entrar</Link>.
+          Já possui conta? <Link to="/ativista/login">Entrar</Link>.
         </p>
       </Boxed>
     </main>

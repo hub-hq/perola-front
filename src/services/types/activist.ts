@@ -11,6 +11,5 @@ export type RegisterActivistPayload = {
   leadershipLevel?: string;
   locality?: string;
   instagram?: string;
-  linkedin?: string;
   activistCode?: string;
 };
