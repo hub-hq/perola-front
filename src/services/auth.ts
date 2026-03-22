@@ -28,13 +28,6 @@ export type LoginPayload = {
   password: string;
 };
 
-export type RegisterPayload = {
-  name: string;
-  email: string;
-  phone: string;
-  password: string;
-};
-
 export type RegisterSupporterPayload = {
   name: string;
   email: string;
@@ -114,19 +107,6 @@ export async function login(payload: LoginPayload): Promise<void> {
       throw new Error("E-mail ou senha inválidos.");
     }
     throw new Error("Não foi possível fazer login. Tente novamente.");
-  }
-}
-
-export async function register(payload: RegisterPayload): Promise<void> {
-  // Mantido por compatibilidade com telas legadas.
-  try {
-    const { data } = await api.post<AuthResponse>("/auth/register", payload);
-    setToken(data.token);
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.status === 409) {
-      throw new Error("Já existe uma conta com este e-mail.");
-    }
-    throw new Error("Não foi possível criar a conta. Tente novamente.");
   }
 }
 
