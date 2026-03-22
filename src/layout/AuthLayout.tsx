@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
+import "@/styles/layouts/auth-layout.scss";
 
 export function AuthLayout() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="auth-layout">
       <Outlet />
     </div>
   );

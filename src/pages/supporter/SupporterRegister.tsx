@@ -16,7 +16,6 @@ import {
 } from "@/components";
 import { registerSupporter } from "@/services/auth";
 import { isValidActivistCode, isValidBrazilianPhone, isValidEmail, isValidName } from "@/utils/validators";
-import "@/styles/pages/register-respacing.scss";
 
 type SupporterField = "name" | "email" | "phone" | "referredByActivistCode" | "confirmPassword";
 

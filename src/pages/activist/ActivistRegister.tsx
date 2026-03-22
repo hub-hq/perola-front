@@ -18,7 +18,6 @@ import {
 } from "@/components";
 import { registerActivist } from "@/services/auth";
 import { isValidActivistCode, isValidBrazilianPhone, isValidCpf, isValidEmail, isValidName } from "@/utils/validators";
-import "@/styles/pages/register-respacing.scss";
 
 type ActivistField = "name" | "cpf" | "email" | "phone" | "activistCode" | "confirmPassword";
 
