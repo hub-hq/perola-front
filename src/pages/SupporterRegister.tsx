@@ -14,9 +14,9 @@ import {
   Title,
 } from "@/components";
 import { registerSupporter } from "@/services/auth";
-import { isValidActivistCode, isValidBrazilianPhone, isValidEmail } from "@/utils/validators";
+import { isValidActivistCode, isValidBrazilianPhone, isValidEmail, isValidName } from "@/utils/validators";
 
-type SupporterField = "email" | "phone" | "referredByActivistCode" | "confirmPassword";
+type SupporterField = "name" | "email" | "phone" | "referredByActivistCode" | "confirmPassword";
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
@@ -58,6 +58,10 @@ function SupporterRegister() {
     const isMilitant = formData.get("isMilitant") === "on";
 
     const nextFieldErrors: Partial<Record<SupporterField, string>> = {};
+
+    if (!isValidName(name)) {
+      nextFieldErrors.name = "Nome invalido. Informe nome e sobrenome.";
+    }
 
     if (!isValidEmail(email)) {
       nextFieldErrors.email = "E-mail invalido. Use um formato como nome@dominio.com.";
@@ -127,7 +131,17 @@ function SupporterRegister() {
         <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="supporter-register-name">Nome completo</label>
           <Spacing size="xs" />
-          <LabelInput id="supporter-register-name" name="name" placeholder="Seu nome" autoComplete="name" required />
+          <LabelInput
+            id="supporter-register-name"
+            name="name"
+            placeholder="Seu nome"
+            autoComplete="name"
+            style={fieldErrors.name ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.name ? "true" : undefined}
+            onChange={() => clearFieldError("name")}
+            required
+          />
+          <FieldError message={fieldErrors.name} />
 
           <Spacing size="md" />
 

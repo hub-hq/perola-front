@@ -6,6 +6,12 @@ export function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
 }
 
+export function isValidName(value: string): boolean {
+  const trimmed = value.trim();
+  if (trimmed.length < 3) return false;
+  return /^[A-Za-zÀ-ÖØ-öø-ÿ'`\-\s]+$/.test(trimmed);
+}
+
 export function isValidBrazilianPhone(value: string): boolean {
   const digits = onlyDigits(value);
   return digits.length === 10 || digits.length === 11;

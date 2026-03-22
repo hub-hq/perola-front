@@ -16,9 +16,9 @@ import {
   Title,
 } from "@/components";
 import { registerActivist } from "@/services/auth";
-import { isValidActivistCode, isValidBrazilianPhone, isValidCpf, isValidEmail } from "@/utils/validators";
+import { isValidActivistCode, isValidBrazilianPhone, isValidCpf, isValidEmail, isValidName } from "@/utils/validators";
 
-type ActivistField = "cpf" | "email" | "phone" | "activistCode" | "confirmPassword";
+type ActivistField = "name" | "cpf" | "email" | "phone" | "activistCode" | "confirmPassword";
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
@@ -62,6 +62,10 @@ function ActivistRegister() {
     const activistCode = String(formData.get("activistCode") ?? "").trim();
 
     const nextFieldErrors: Partial<Record<ActivistField, string>> = {};
+
+    if (!isValidName(name)) {
+      nextFieldErrors.name = "Nome invalido. Informe nome e sobrenome.";
+    }
 
     if (!isValidCpf(cpf)) {
       nextFieldErrors.cpf = "CPF invalido. Verifique os digitos e tente novamente.";
@@ -137,7 +141,17 @@ function ActivistRegister() {
         <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="activist-register-name">Nome completo</label>
           <Spacing size="xs" />
-          <LabelInput id="activist-register-name" name="name" placeholder="Seu nome" autoComplete="name" required />
+          <LabelInput
+            id="activist-register-name"
+            name="name"
+            placeholder="Seu nome"
+            autoComplete="name"
+            style={fieldErrors.name ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.name ? "true" : undefined}
+            onChange={() => clearFieldError("name")}
+            required
+          />
+          <FieldError message={fieldErrors.name} />
 
           <Spacing size="md" />
 
