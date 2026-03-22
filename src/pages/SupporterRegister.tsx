@@ -13,11 +13,34 @@ import {
   Title,
 } from "@/components";
 import { registerSupporter } from "@/services/auth";
+import { isValidActivistCode, isValidBrazilianPhone, isValidEmail } from "@/utils/validators";
+
+type SupporterField = "email" | "phone" | "referredByActivistCode" | "confirmPassword";
+
+const fieldErrorStyle = {
+  border: "1px solid var(--color-feedback-error)",
+} as const;
+
+const fieldErrorTextStyle = {
+  color: "var(--color-feedback-error)",
+  fontSize: "0.85rem",
+  fontWeight: 600,
+} as const;
 
 function SupporterRegister() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<SupporterField, string>>>({});
+
+  function clearFieldError(field: SupporterField) {
+    setFieldErrors((current) => {
+      if (!current[field]) return current;
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -39,13 +62,33 @@ function SupporterRegister() {
     const isPtMember = formData.get("isPtMember") === "on";
     const isMilitant = formData.get("isMilitant") === "on";
 
+    const nextFieldErrors: Partial<Record<SupporterField, string>> = {};
+
+    if (!isValidEmail(email)) {
+      nextFieldErrors.email = "E-mail invalido. Use um formato como nome@dominio.com.";
+    }
+
+    if (!isValidBrazilianPhone(phone)) {
+      nextFieldErrors.phone = "Celular invalido. Use DDD + numero (10 ou 11 digitos).";
+    }
+
+    if (referredByActivistCode && !isValidActivistCode(referredByActivistCode)) {
+      nextFieldErrors.referredByActivistCode = "Codigo de ativista invalido. Exemplo: ATIV-2041.";
+    }
+
     if (password !== confirmPassword) {
-      setErrorMessage("As senhas nao conferem.");
+      nextFieldErrors.confirmPassword = "As senhas nao conferem.";
+    }
+
+    if (Object.keys(nextFieldErrors).length > 0) {
+      setFieldErrors(nextFieldErrors);
+      setErrorMessage("Revise os campos destacados em vermelho.");
       return;
     }
 
     setIsLoading(true);
     setErrorMessage("");
+    setFieldErrors({});
 
     try {
       await registerSupporter({
@@ -86,7 +129,7 @@ function SupporterRegister() {
 
         <Spacing size="sm" />
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="supporter-register-name">Nome completo</label>
           <Spacing size="xs" />
           <LabelInput id="supporter-register-name" name="name" placeholder="Seu nome" autoComplete="name" required />
@@ -95,13 +138,31 @@ function SupporterRegister() {
 
           <label htmlFor="supporter-register-email">E-mail</label>
           <Spacing size="xs" />
-          <EmailInput id="supporter-register-email" name="email" placeholder="seuemail@exemplo.com" autoComplete="email" required />
+          <EmailInput
+            id="supporter-register-email"
+            name="email"
+            placeholder="seuemail@exemplo.com"
+            autoComplete="email"
+            style={fieldErrors.email ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("email")}
+            required
+          />
+          {fieldErrors.email ? <small style={fieldErrorTextStyle}>{fieldErrors.email}</small> : null}
 
           <Spacing size="md" />
 
           <label htmlFor="supporter-register-phone">Celular</label>
           <Spacing size="xs" />
-          <PhoneInput id="supporter-register-phone" name="phone" autoComplete="tel" placeholder="(00) 00000-0000" required />
+          <PhoneInput
+            id="supporter-register-phone"
+            name="phone"
+            autoComplete="tel"
+            placeholder="(00) 00000-0000"
+            style={fieldErrors.phone ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("phone")}
+            required
+          />
+          {fieldErrors.phone ? <small style={fieldErrorTextStyle}>{fieldErrors.phone}</small> : null}
 
           <Spacing size="md" />
 
@@ -147,8 +208,13 @@ function SupporterRegister() {
             name="confirmPassword"
             autoComplete="new-password"
             placeholder="Repita sua senha"
+            style={fieldErrors.confirmPassword ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("confirmPassword")}
             required
           />
+          {fieldErrors.confirmPassword ? (
+            <small style={fieldErrorTextStyle}>{fieldErrors.confirmPassword}</small>
+          ) : null}
 
           <Spacing size="lg" />
 
@@ -164,7 +230,15 @@ function SupporterRegister() {
 
           <label htmlFor="supporter-register-code">Codigo do ativista que indicou</label>
           <Spacing size="xs" />
-          <ActivistCodeInput id="supporter-register-code" name="referredByActivistCode" />
+          <ActivistCodeInput
+            id="supporter-register-code"
+            name="referredByActivistCode"
+            style={fieldErrors.referredByActivistCode ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("referredByActivistCode")}
+          />
+          {fieldErrors.referredByActivistCode ? (
+            <small style={fieldErrorTextStyle}>{fieldErrors.referredByActivistCode}</small>
+          ) : null}
 
           <Spacing size="md" />
 

@@ -2,6 +2,10 @@ export function onlyDigits(value: string): string {
   return value.replace(/\D/g, "");
 }
 
+export function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
+}
+
 export function isValidBrazilianPhone(value: string): boolean {
   const digits = onlyDigits(value);
   return digits.length === 10 || digits.length === 11;

@@ -15,11 +15,34 @@ import {
   Title,
 } from "@/components";
 import { registerActivist } from "@/services/auth";
+import { isValidActivistCode, isValidBrazilianPhone, isValidCpf, isValidEmail } from "@/utils/validators";
+
+type ActivistField = "cpf" | "email" | "phone" | "activistCode" | "confirmPassword";
+
+const fieldErrorStyle = {
+  border: "1px solid var(--color-feedback-error)",
+} as const;
+
+const fieldErrorTextStyle = {
+  color: "var(--color-feedback-error)",
+  fontSize: "0.85rem",
+  fontWeight: 600,
+} as const;
 
 function ActivistRegister() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<ActivistField, string>>>({});
+
+  function clearFieldError(field: ActivistField) {
+    setFieldErrors((current) => {
+      if (!current[field]) return current;
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,13 +66,37 @@ function ActivistRegister() {
     const linkedin = String(formData.get("linkedin") ?? "").trim();
     const activistCode = String(formData.get("activistCode") ?? "").trim();
 
+    const nextFieldErrors: Partial<Record<ActivistField, string>> = {};
+
+    if (!isValidCpf(cpf)) {
+      nextFieldErrors.cpf = "CPF invalido. Verifique os digitos e tente novamente.";
+    }
+
+    if (!isValidEmail(email)) {
+      nextFieldErrors.email = "E-mail invalido. Use um formato como nome@dominio.com.";
+    }
+
+    if (!isValidBrazilianPhone(phone)) {
+      nextFieldErrors.phone = "Celular invalido. Use DDD + numero (10 ou 11 digitos).";
+    }
+
+    if (activistCode && !isValidActivistCode(activistCode)) {
+      nextFieldErrors.activistCode = "Codigo de indicacao invalido. Exemplo: ATIV-2041.";
+    }
+
     if (password !== confirmPassword) {
-      setErrorMessage("As senhas nao conferem.");
+      nextFieldErrors.confirmPassword = "As senhas nao conferem.";
+    }
+
+    if (Object.keys(nextFieldErrors).length > 0) {
+      setFieldErrors(nextFieldErrors);
+      setErrorMessage("Revise os campos destacados em vermelho.");
       return;
     }
 
     setIsLoading(true);
     setErrorMessage("");
+    setFieldErrors({});
 
     try {
       await registerActivist({
@@ -92,7 +139,7 @@ function ActivistRegister() {
 
         <Spacing size="sm" />
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="activist-register-name">Nome completo</label>
           <Spacing size="xs" />
           <LabelInput id="activist-register-name" name="name" placeholder="Seu nome" autoComplete="name" required />
@@ -104,20 +151,41 @@ function ActivistRegister() {
           <CpfInput
             id="activist-register-cpf"
             name="cpf"
+            style={fieldErrors.cpf ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("cpf")}
             required
           />
+          {fieldErrors.cpf ? <small style={fieldErrorTextStyle}>{fieldErrors.cpf}</small> : null}
 
           <Spacing size="md" />
 
           <label htmlFor="activist-register-email">E-mail</label>
           <Spacing size="xs" />
-          <EmailInput id="activist-register-email" name="email" placeholder="seuemail@exemplo.com" autoComplete="email" required />
+          <EmailInput
+            id="activist-register-email"
+            name="email"
+            placeholder="seuemail@exemplo.com"
+            autoComplete="email"
+            style={fieldErrors.email ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("email")}
+            required
+          />
+          {fieldErrors.email ? <small style={fieldErrorTextStyle}>{fieldErrors.email}</small> : null}
 
           <Spacing size="md" />
 
           <label htmlFor="activist-register-phone">Celular</label>
           <Spacing size="xs" />
-          <PhoneInput id="activist-register-phone" name="phone" autoComplete="tel" placeholder="(00) 00000-0000" required />
+          <PhoneInput
+            id="activist-register-phone"
+            name="phone"
+            autoComplete="tel"
+            placeholder="(00) 00000-0000"
+            style={fieldErrors.phone ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("phone")}
+            required
+          />
+          {fieldErrors.phone ? <small style={fieldErrorTextStyle}>{fieldErrors.phone}</small> : null}
 
           <Spacing size="md" />
 
@@ -163,8 +231,13 @@ function ActivistRegister() {
             name="confirmPassword"
             autoComplete="new-password"
             placeholder="Repita sua senha"
+            style={fieldErrors.confirmPassword ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("confirmPassword")}
             required
           />
+          {fieldErrors.confirmPassword ? (
+            <small style={fieldErrorTextStyle}>{fieldErrors.confirmPassword}</small>
+          ) : null}
 
           <Spacing size="lg" />
 
@@ -204,7 +277,15 @@ function ActivistRegister() {
 
           <label htmlFor="activist-register-code">Codigo de ativista que indicou</label>
           <Spacing size="xs" />
-          <ActivistCodeInput id="activist-register-code" name="activistCode" />
+          <ActivistCodeInput
+            id="activist-register-code"
+            name="activistCode"
+            style={fieldErrors.activistCode ? fieldErrorStyle : undefined}
+            onChange={() => clearFieldError("activistCode")}
+          />
+          {fieldErrors.activistCode ? (
+            <small style={fieldErrorTextStyle}>{fieldErrors.activistCode}</small>
+          ) : null}
 
           <Spacing size="md" />
 
