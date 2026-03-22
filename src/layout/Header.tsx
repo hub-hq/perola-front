@@ -22,7 +22,7 @@ export function Header() {
             </Link>
 
             <nav aria-label="Navegação principal" className="site-header__nav">
-              <Boxed direction="row" gap="md" align="center" wrap padding="none">
+              <Boxed direction="row" gap="md" align="center" justify="center" wrap padding="none">
                 <Link to="/sobre" className="site-header__nav-item">
                   Sobre
                 </Link>
