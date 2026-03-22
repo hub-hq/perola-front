@@ -44,10 +44,10 @@ export const router = createBrowserRouter([
     children: [
       { path: "/login", element: <Login /> },
       { path: "/admin/login", element: <Navigate to="/login" replace /> },
-      { path: "/ativista/cadastro", element: <ActivistRegister /> },
       { path: "/ativista/login", element: <ActivistLogin /> },
-      { path: "/apoiador/cadastro", element: <SupporterRegister /> },
+      { path: "/ativista/cadastro", element: <ActivistRegister /> },
       { path: "/apoiador/login", element: <SupporterLogin /> },
+      { path: "/apoiador/cadastro", element: <SupporterRegister /> },
     ],
   },
   {
