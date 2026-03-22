@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  ActivistCodeInput,
   Boxed,
   Button,
   CheckBoxInput,
@@ -17,9 +16,9 @@ import {
   Title,
 } from "@/components";
 import { registerActivist } from "@/services/auth";
-import { isValidActivistCode, isValidBrazilianPhone, isValidCpf, isValidEmail, isValidName } from "@/utils/validators";
+import { isValidBrazilianPhone, isValidCpf, isValidEmail, isValidName } from "@/utils/validators";
 
-type ActivistField = "name" | "cpf" | "email" | "phone" | "activistCode" | "confirmPassword";
+type ActivistField = "name" | "cpf" | "email" | "phone" | "confirmPassword";
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
@@ -59,7 +58,6 @@ function ActivistRegister() {
     const leadershipLevel = String(formData.get("leadershipLevel") ?? "").trim();
     const locality = String(formData.get("locality") ?? "").trim();
     const instagram = String(formData.get("instagram") ?? "").trim();
-    const activistCode = String(formData.get("activistCode") ?? "").trim();
 
     const nextFieldErrors: Partial<Record<ActivistField, string>> = {};
 
@@ -77,10 +75,6 @@ function ActivistRegister() {
 
     if (!isValidBrazilianPhone(phone)) {
       nextFieldErrors.phone = "Celular inválido. Use DDD + número (10 ou 11 dígitos).";
-    }
-
-    if (activistCode && !isValidActivistCode(activistCode)) {
-      nextFieldErrors.activistCode = "Código de indicação inválido. Exemplo: ATIV-2041.";
     }
 
     if (password !== confirmPassword) {
@@ -111,7 +105,6 @@ function ActivistRegister() {
         leadershipLevel: leadershipLevel || undefined,
         locality: locality || undefined,
         instagram: instagram || undefined,
-        activistCode: activistCode || undefined,
       });
       navigate("/ativista/dashboard");
     } catch (error) {
@@ -281,22 +274,11 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-code">Código de ativista que indicou</label>
-          <Spacing size="xs" />
-          <ActivistCodeInput
-            id="activist-register-code"
-            name="activistCode"
-            style={fieldErrors.activistCode ? fieldErrorStyle : undefined}
-            aria-invalid={fieldErrors.activistCode ? "true" : undefined}
-            onChange={() => clearFieldError("activistCode")}
-          />
-          <FieldError message={fieldErrors.activistCode} />
-
-          <Spacing size="md" />
-
           <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="activist-register-terms" name="terms" required />
-            <label htmlFor="activist-register-terms">Li e aceito os termos de uso e política de privacidade.</label>
+            <label htmlFor="activist-register-terms">
+              Li e aceito os termos de uso e <Link to="/politica-privacidade">política de privacidade</Link>.
+            </label>
           </Boxed>
 
           <Spacing size="lg" />

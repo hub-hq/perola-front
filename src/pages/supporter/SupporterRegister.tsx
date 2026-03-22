@@ -270,7 +270,9 @@ function SupporterRegister() {
 
           <Boxed direction="row" align="center" gap="xs" padding="none">
             <CheckBoxInput id="supporter-register-terms" name="terms" required />
-            <label htmlFor="supporter-register-terms">Li e aceito os termos de uso e política de privacidade.</label>
+            <label htmlFor="supporter-register-terms">
+              Li e aceito os termos de uso e <Link to="/politica-privacidade">política de privacidade</Link>.
+            </label>
           </Boxed>
 
           <Spacing size="lg" />
