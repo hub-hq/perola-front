@@ -40,7 +40,7 @@ function SupporterLogin() {
         }}
       >
         <Title level={1}>Entrar como Apoiador</Title>
-        <p>Acesse sua conta de apoiador para atualizar seus dados.</p>
+        <p>Acesse sua conta de apoiador para continuar.</p>
 
         <Spacing size="sm" />
 

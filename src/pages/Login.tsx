@@ -53,8 +53,8 @@ function Login() {
           background: "var(--color-surface-base)",
         }}
       >
-        <Title level={1}>Entrar como Admin</Title>
-        <p>Acesse sua conta administrativa.</p>
+        <Title level={1}>Entrar como Administrador</Title>
+        <p>Acesse sua conta de administrador.</p>
 
         <Spacing size="sm" />
 

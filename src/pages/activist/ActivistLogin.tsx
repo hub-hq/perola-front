@@ -45,7 +45,7 @@ function ActivistLogin() {
         }}
       >
         <Title level={1}>Entrar como Ativista</Title>
-        <p>Acesse sua conta de ativista.</p>
+        <p>Acesse sua conta de ativista para continuar.</p>
 
         <Spacing size="sm" />
 
