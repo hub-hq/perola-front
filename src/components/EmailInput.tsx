@@ -1,4 +1,5 @@
 import type { InputHTMLAttributes } from "react";
+import "@/styles/components/form-controls.scss";
 
 type EmailInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Boxed, Button, Spacing, Title } from "@/components";
-import { logout } from "@/services/auth";
+import { getAuthenticatedUser, logout } from "@/services/auth";
 import { getReferralMetrics, type ReferralMetricsResponse } from "@/services/supporters";
 
 function ActivistDashboard() {
   const navigate = useNavigate();
+  const authenticatedUser = getAuthenticatedUser();
+  const isMockSession = authenticatedUser?.isMock === true;
   const [metrics, setMetrics] = useState<ReferralMetricsResponse | null>(null);
   const [isLoadingMetrics, setIsLoadingMetrics] = useState(true);
   const [metricsError, setMetricsError] = useState("");
@@ -54,6 +56,23 @@ function ActivistDashboard() {
       >
         <Title level={1}>Dashboard do Ativista</Title>
         <p>Bem-vindo(a)! Esta é sua área para acompanhar e fortalecer as ações da campanha.</p>
+
+        {isMockSession ? (
+          <Boxed
+            centered={false}
+            gap="xxs"
+            style={{
+              border: "1px dashed var(--color-border-soft)",
+              borderRadius: "12px",
+              background: "var(--color-surface-soft)",
+            }}
+          >
+            <strong style={{ fontSize: "0.9rem" }}>Ambiente de demonstracao</strong>
+            <small style={{ color: "var(--color-text-tertiary)" }}>
+              Sessao mock ativa para testes de navegacao e dashboard.
+            </small>
+          </Boxed>
+        ) : null}
 
         <Spacing size="sm" />
 

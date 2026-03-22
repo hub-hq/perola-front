@@ -1,4 +1,5 @@
 import type { TextareaHTMLAttributes } from "react";
+import "@/styles/components/form-controls.scss";
 
 type TextAreaInputProps = TextareaHTMLAttributes<HTMLTextAreaElement>;
 

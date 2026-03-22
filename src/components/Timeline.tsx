@@ -1,5 +1,5 @@
 import { Boxed, Title } from "@/components";
-import styles from "./Timeline.module.scss";
+import styles from "@/styles/components/Timeline.module.scss";
 
 export type TimelineMilestone = {
   year: string;

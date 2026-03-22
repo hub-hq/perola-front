@@ -1,4 +1,5 @@
 import type { ChangeEvent, InputHTMLAttributes } from "react";
+import "@/styles/components/form-controls.scss";
 
 type ActivistCodeInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
