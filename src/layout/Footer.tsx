@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Boxed, Spacing } from "@/components";
 
 type SocialLink = {
@@ -112,6 +113,14 @@ export function Footer() {
 							</li>
 						))}
 					</ul>
+				</nav>
+
+				<Spacing size="sm" />
+
+				<nav aria-label="Links institucionais">
+					<p style={{ textAlign: "center", margin: 0 }}>
+						<Link to="/politica-privacidade">Política de Privacidade</Link>
+					</p>
 				</nav>
 
 				<Spacing size="sm" />

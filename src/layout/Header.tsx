@@ -45,14 +45,8 @@ export function Header() {
               <Link to="/trajetoria" style={navItemStyle}>
                 Trajetória
               </Link>
-              <Link to="/seja-ativista" style={navItemStyle}>
-                Seja Ativista
-              </Link>
               <Link to="/seja-apoiador" style={navItemStyle}>
                 Seja Apoiador
-              </Link>
-              <Link to="/politica-privacidade" style={navItemStyle}>
-                Privacidade
               </Link>
             </Boxed>
           </nav>
