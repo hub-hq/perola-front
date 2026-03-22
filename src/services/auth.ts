@@ -1,18 +1,16 @@
 import axios from "axios";
 import { api } from "@/services/api";
+import type {
+  AuthResponse,
+  AuthUser,
+  LoginPayload,
+  RegisterActivistPayload,
+  RegisterSupporterPayload,
+} from "@/services/types";
 
 const TOKEN_KEY = "token";
 const USER_KEY = "auth_user";
 const MOCK_TOKEN = "mock-activist-token";
-
-export type AuthUser = {
-  id: string;
-  name: string;
-  email: string;
-  profile: "activist" | "supporter";
-  activistCode?: string;
-  isMock?: boolean;
-};
 
 const mockActivistUser: AuthUser = {
   id: "mock-activist-1",
@@ -21,47 +19,6 @@ const mockActivistUser: AuthUser = {
   profile: "activist",
   activistCode: "ATIV-2041",
   isMock: true,
-};
-
-export type LoginPayload = {
-  email: string;
-  password: string;
-};
-
-export type RegisterSupporterPayload = {
-  name: string;
-  email: string;
-  phone: string;
-  city: string;
-  region: string;
-  areaOfAction: string;
-  role: string;
-  password: string;
-  party?: string;
-  referredByActivistCode?: string;
-  isPtMember?: boolean;
-  isMilitant?: boolean;
-};
-
-export type RegisterActivistPayload = {
-  name: string;
-  cpf: string;
-  email: string;
-  phone: string;
-  city: string;
-  region: string;
-  areaOfAction: string;
-  role: string;
-  password: string;
-  leadershipLevel?: string;
-  locality?: string;
-  instagram?: string;
-  linkedin?: string;
-  activistCode?: string;
-};
-
-type AuthResponse = {
-  token: string;
 };
 
 function setToken(token: string): void {
