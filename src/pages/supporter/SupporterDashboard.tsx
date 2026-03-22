@@ -22,15 +22,15 @@ function SupporterDashboard() {
           background: "var(--color-surface-base)",
         }}
       >
-        <Title level={1}>Area do Apoiador</Title>
+        <Title level={1}>Área do Apoiador</Title>
         <p>
-          {user?.name ? `Ola, ${user.name}!` : "Ola!"} Aqui voce recebe atualizacoes da campanha e
+          {user?.name ? `Olá, ${user.name}!` : "Olá!"} Aqui você recebe atualizações da campanha e
           acompanha como pode contribuir.
         </p>
 
         <Spacing size="sm" />
 
-        <Title level={3}>Acoes rapidas</Title>
+        <Title level={3}>Ações rápidas</Title>
 
         <Boxed direction="row" gap="sm" wrap padding="none" align="center">
           <Link to="/" style={{ flex: "1 1 220px" }}>
@@ -41,7 +41,7 @@ function SupporterDashboard() {
 
           <Link to="/seja-apoiador" style={{ flex: "1 1 220px" }}>
             <Button type="button" variant="outline" fullWidth>
-              Ver pagina de apoio
+              Ver página de apoio
             </Button>
           </Link>
 

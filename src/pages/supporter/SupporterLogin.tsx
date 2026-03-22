@@ -22,7 +22,7 @@ function SupporterLogin() {
       await login({ email, password });
       navigate("/apoiador/dashboard");
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel fazer login.");
+      setErrorMessage(error instanceof Error ? error.message : "Não foi possível fazer login.");
     } finally {
       setIsLoading(false);
     }
@@ -84,7 +84,7 @@ function SupporterLogin() {
         <Spacing size="md" />
 
         <p>
-          Ainda nao tem conta? <Link to="/apoiador/cadastro">Cadastre-se</Link>.
+          Ainda não tem conta? <Link to="/apoiador/cadastro">Cadastre-se</Link>.
         </p>
       </Boxed>
     </main>

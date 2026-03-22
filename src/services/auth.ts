@@ -73,9 +73,9 @@ export async function registerSupporter(payload: RegisterSupporterPayload): Prom
     setToken(data.token);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 409) {
-      throw new Error("Ja existe uma conta com este e-mail.");
+      throw new Error("Já existe uma conta com este e-mail.");
     }
-    throw new Error("Nao foi possivel criar a conta de apoiador. Tente novamente.");
+    throw new Error("Não foi possível criar a conta de apoiador. Tente novamente.");
   }
 }
 
@@ -85,9 +85,9 @@ export async function registerActivist(payload: RegisterActivistPayload): Promis
     setToken(data.token);
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 409) {
-      throw new Error("Ja existe uma conta com este e-mail.");
+      throw new Error("Já existe uma conta com este e-mail.");
     }
-    throw new Error("Nao foi possivel criar a conta de ativista. Tente novamente.");
+    throw new Error("Não foi possível criar a conta de ativista. Tente novamente.");
   }
 }
 

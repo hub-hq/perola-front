@@ -24,7 +24,7 @@ function AdminDashboard() {
         if (isMounted) setMetrics(data);
       } catch {
         if (isMounted) {
-          setMetricsError("Nao foi possivel carregar as metricas de indicacao.");
+          setMetricsError("Não foi possível carregar as métricas de indicação.");
         }
       } finally {
         if (isMounted) setIsLoadingMetrics(false);
@@ -55,7 +55,7 @@ function AdminDashboard() {
         }}
       >
         <Title level={1}>Dashboard Administrativo</Title>
-        <p>Bem-vindo(a)! Esta e a area administrativa para acompanhar os indicadores da campanha.</p>
+        <p>Bem-vindo(a)! Esta é a área administrativa para acompanhar os indicadores da campanha.</p>
 
         {isMockSession ? (
           <Boxed
@@ -67,18 +67,18 @@ function AdminDashboard() {
               background: "var(--color-surface-soft)",
             }}
           >
-            <strong style={{ fontSize: "0.9rem" }}>Ambiente de demonstracao</strong>
+            <strong style={{ fontSize: "0.9rem" }}>Ambiente de demonstração</strong>
             <small style={{ color: "var(--color-text-tertiary)" }}>
-              Sessao mock ativa para testes de navegacao e dashboard.
+              Sessão mock ativa para testes de navegação e dashboard.
             </small>
           </Boxed>
         ) : null}
 
         <Spacing size="sm" />
 
-        <Title level={3}>Metricas de indicacao</Title>
+        <Title level={3}>Métricas de indicação</Title>
 
-        {isLoadingMetrics ? <p>Carregando metricas...</p> : null}
+        {isLoadingMetrics ? <p>Carregando métricas...</p> : null}
 
         {metricsError ? (
           <p style={{ color: "var(--color-feedback-error)", fontWeight: 600 }}>{metricsError}</p>
@@ -95,7 +95,7 @@ function AdminDashboard() {
           >
             {metrics.isDemoData ? (
               <small style={{ color: "var(--color-text-tertiary)", fontWeight: 600 }}>
-                Exibindo dados de demonstracao ate a API de metricas ficar disponivel.
+                Exibindo dados de demonstração até a API de métricas ficar disponível.
               </small>
             ) : null}
 
@@ -124,7 +124,7 @@ function AdminDashboard() {
                   background: "var(--color-surface-base)",
                 }}
               >
-                <strong>Com codigo de indicacao</strong>
+                <strong>Com código de indicação</strong>
                 <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.withReferral}</p>
               </Boxed>
 
@@ -138,7 +138,7 @@ function AdminDashboard() {
                   background: "var(--color-surface-base)",
                 }}
               >
-                <strong>Sem codigo de indicacao</strong>
+                <strong>Sem código de indicação</strong>
                 <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.withoutReferral}</p>
               </Boxed>
             </Boxed>
@@ -170,7 +170,7 @@ function AdminDashboard() {
                 ))}
               </Boxed>
             ) : (
-              <p>Ainda nao existem apoiadores vinculados por codigo.</p>
+              <p>Ainda não existem apoiadores vinculados por código.</p>
             )}
           </Boxed>
         ) : null}

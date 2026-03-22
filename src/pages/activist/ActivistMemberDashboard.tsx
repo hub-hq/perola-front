@@ -22,10 +22,10 @@ function ActivistMemberDashboard() {
           background: "var(--color-surface-base)",
         }}
       >
-        <Title level={1}>Area do Ativista</Title>
+        <Title level={1}>Área do Ativista</Title>
         <p>
-          {user?.name ? `Ola, ${user.name}!` : "Ola!"} Aqui voce acompanha sua participacao,
-          acessa materiais e fortalece sua mobilizacao.
+          {user?.name ? `Olá, ${user.name}!` : "Olá!"} Aqui você acompanha sua participação,
+          acessa materiais e fortalece sua mobilização.
         </p>
 
         <Spacing size="sm" />
@@ -41,7 +41,7 @@ function ActivistMemberDashboard() {
 
           <Link to="/admin/dashboard" style={{ flex: "1 1 220px" }}>
             <Button type="button" variant="outline" fullWidth>
-              Ver painel admin
+              Ver painel administrativo
             </Button>
           </Link>
 

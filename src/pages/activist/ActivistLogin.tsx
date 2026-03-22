@@ -22,7 +22,7 @@ function ActivistLogin() {
       await login({ email, password });
       navigate("/ativista/dashboard");
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Nao foi possivel fazer login.");
+      setErrorMessage(error instanceof Error ? error.message : "Não foi possível fazer login.");
     } finally {
       setIsLoading(false);
     }
@@ -91,11 +91,11 @@ function ActivistLogin() {
         {canUseMockSession() ? (
           <>
             <Button type="button" variant="secondary" fullWidth onClick={handleMockLogin}>
-              Entrar com usuario fake (dev)
+              Entrar com usuário fake (dev)
             </Button>
             <Spacing size="xs" />
             <small style={{ color: "var(--color-text-tertiary)" }}>
-              Cria uma sessao mock para simular login de ativista.
+              Cria uma sessão mock para simular login de ativista.
             </small>
           </>
         ) : null}
@@ -103,7 +103,7 @@ function ActivistLogin() {
         <Spacing size="md" />
 
         <p>
-          Ainda nao tem conta? <Link to="/ativista/cadastro">Cadastre-se</Link>.
+          Ainda não tem conta? <Link to="/ativista/cadastro">Cadastre-se</Link>.
         </p>
       </Boxed>
     </main>

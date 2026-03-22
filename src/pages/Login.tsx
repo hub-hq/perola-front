@@ -100,10 +100,10 @@ function Login() {
         {canUseMockSession() ? (
           <>
             <Button type="button" variant="secondary" fullWidth onClick={handleMockLogin}>
-              Entrar com usuario fake (dev)
+              Entrar com usuário fake (dev)
             </Button>
             <Spacing size="xs" />
-            <small style={{ color: "var(--color-text-tertiary)" }}>Cria uma sessao mock para simular login de admin.</small>
+            <small style={{ color: "var(--color-text-tertiary)" }}>Cria uma sessão mock para simular login de admin.</small>
           </>
         ) : null}
       </Boxed>
