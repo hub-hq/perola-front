@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
+  ActivistCodeInput,
   Boxed,
   Button,
   CheckBoxInput,
+  CpfInput,
   EmailInput,
   LabelInput,
   PasswordInput,
@@ -90,7 +92,7 @@ function ActivistRegister() {
 
         <Spacing size="sm" />
 
-        <form onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="activist-register-name">Nome completo</label>
           <Spacing size="xs" />
           <LabelInput id="activist-register-name" name="name" placeholder="Seu nome" autoComplete="name" required />
@@ -99,12 +101,9 @@ function ActivistRegister() {
 
           <label htmlFor="activist-register-cpf">CPF</label>
           <Spacing size="xs" />
-          <LabelInput
+          <CpfInput
             id="activist-register-cpf"
             name="cpf"
-            placeholder="000.000.000-00"
-            inputMode="numeric"
-            maxLength={14}
             required
           />
 
@@ -205,7 +204,7 @@ function ActivistRegister() {
 
           <label htmlFor="activist-register-code">Codigo de ativista que indicou</label>
           <Spacing size="xs" />
-          <LabelInput id="activist-register-code" name="activistCode" placeholder="Ex.: ATIV-2041" />
+          <ActivistCodeInput id="activist-register-code" name="activistCode" />
 
           <Spacing size="md" />
 

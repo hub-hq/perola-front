@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
+  ActivistCodeInput,
   Boxed,
   Button,
   CheckBoxInput,
@@ -85,7 +86,7 @@ function SupporterRegister() {
 
         <Spacing size="sm" />
 
-        <form onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="supporter-register-name">Nome completo</label>
           <Spacing size="xs" />
           <LabelInput id="supporter-register-name" name="name" placeholder="Seu nome" autoComplete="name" required />
@@ -163,7 +164,7 @@ function SupporterRegister() {
 
           <label htmlFor="supporter-register-code">Codigo do ativista que indicou</label>
           <Spacing size="xs" />
-          <LabelInput id="supporter-register-code" name="referredByActivistCode" placeholder="Ex.: ATIV-2041" />
+          <ActivistCodeInput id="supporter-register-code" name="referredByActivistCode" />
 
           <Spacing size="md" />
 

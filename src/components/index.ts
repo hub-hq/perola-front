@@ -1,8 +1,10 @@
 export { default as Boxed } from "./Boxed";
 export { default as Button } from "./Button";
+export { default as ActivistCodeInput } from "./ActivistCodeInput";
 export { CTA } from "./CTA";
 export { default as CepInput } from "./CepInput";
 export { default as CheckBoxInput } from "./CheckBoxInput";
+export { default as CpfInput } from "./CpfInput";
 export { default as DateInput } from "./DateInput";
 export { default as DateTimeInput } from "./DateTimeInput";
 export { default as EmailInput } from "./EmailInput";
