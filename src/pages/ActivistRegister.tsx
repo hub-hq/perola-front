@@ -18,6 +18,7 @@ import {
 } from "@/components";
 import { registerActivist } from "@/services/auth";
 import { isValidActivistCode, isValidBrazilianPhone, isValidCpf, isValidEmail, isValidName } from "@/utils/validators";
+import "@/styles/pages/register-respacing.scss";
 
 type ActivistField = "name" | "cpf" | "email" | "phone" | "activistCode" | "confirmPassword";
 
@@ -124,7 +125,7 @@ function ActivistRegister() {
   }
 
   return (
-    <main>
+    <main className="auth-form-page">
       <ToastAlert message={errorMessage} title="Nao foi possivel continuar" onClose={() => setErrorMessage("")} />
 
       <Boxed

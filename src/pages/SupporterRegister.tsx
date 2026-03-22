@@ -16,6 +16,7 @@ import {
 } from "@/components";
 import { registerSupporter } from "@/services/auth";
 import { isValidActivistCode, isValidBrazilianPhone, isValidEmail, isValidName } from "@/utils/validators";
+import "@/styles/pages/register-respacing.scss";
 
 type SupporterField = "name" | "email" | "phone" | "referredByActivistCode" | "confirmPassword";
 
@@ -114,7 +115,7 @@ function SupporterRegister() {
   }
 
   return (
-    <main>
+    <main className="auth-form-page">
       <ToastAlert message={errorMessage} title="Nao foi possivel continuar" onClose={() => setErrorMessage("")} />
 
       <Boxed
