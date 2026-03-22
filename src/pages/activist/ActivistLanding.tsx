@@ -43,6 +43,7 @@ function ActivistLanding() {
             </Button>
           </Link>
         </Boxed>
+
       </Boxed>
     </main>
   );

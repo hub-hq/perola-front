@@ -8,7 +8,7 @@ import {
   Spacing,
   Title,
 } from "@/components";
-import { login } from "@/services/auth";
+import { canUseMockSession, login, startMockActivistSession } from "@/services/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -35,6 +35,11 @@ function Login() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  function handleMockLogin() {
+    const started = startMockActivistSession();
+    if (started) navigate("/ativista/dashboard");
   }
 
   return (
@@ -89,6 +94,20 @@ function Login() {
             </>
           ) : null}
         </form>
+
+        <Spacing size="md" />
+
+        {canUseMockSession() ? (
+          <>
+            <Button type="button" variant="secondary" fullWidth onClick={handleMockLogin}>
+              Entrar com usuario fake (dev)
+            </Button>
+            <Spacing size="xs" />
+            <small style={{ color: "var(--color-text-tertiary)" }}>
+              Cria uma sessao mock para simular login de ativista.
+            </small>
+          </>
+        ) : null}
 
         <Spacing size="md" />
 

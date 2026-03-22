@@ -2,6 +2,26 @@ import axios from "axios";
 import { api } from "@/services/api";
 
 const TOKEN_KEY = "token";
+const USER_KEY = "auth_user";
+const MOCK_TOKEN = "mock-activist-token";
+
+export type AuthUser = {
+  id: string;
+  name: string;
+  email: string;
+  profile: "activist" | "supporter";
+  activistCode?: string;
+  isMock?: boolean;
+};
+
+const mockActivistUser: AuthUser = {
+  id: "mock-activist-1",
+  name: "Ativista Demo",
+  email: "demo.ativista@perola.dev",
+  profile: "activist",
+  activistCode: "ATIV-2041",
+  isMock: true,
+};
 
 export type LoginPayload = {
   email: string;
@@ -55,8 +75,34 @@ function setToken(token: string): void {
   localStorage.setItem(TOKEN_KEY, token);
 }
 
+function setUser(user: AuthUser): void {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
+
+export function getAuthenticatedUser(): AuthUser | null {
+  const value = localStorage.getItem(USER_KEY);
+  if (!value) return null;
+
+  try {
+    return JSON.parse(value) as AuthUser;
+  } catch {
+    return null;
+  }
+}
+
 export function isAuthenticated(): boolean {
   return !!localStorage.getItem(TOKEN_KEY);
+}
+
+export function canUseMockSession(): boolean {
+  return import.meta.env.DEV;
+}
+
+export function startMockActivistSession(): boolean {
+  if (!canUseMockSession()) return false;
+  setToken(MOCK_TOKEN);
+  setUser(mockActivistUser);
+  return true;
 }
 
 export async function login(payload: LoginPayload): Promise<void> {
@@ -110,4 +156,5 @@ export async function registerActivist(payload: RegisterActivistPayload): Promis
 
 export function logout(): void {
   localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(USER_KEY);
 }

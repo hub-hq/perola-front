@@ -1,9 +1,40 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Boxed, Button, Spacing, Title } from "@/components";
 import { logout } from "@/services/auth";
+import { getReferralMetrics, type ReferralMetricsResponse } from "@/services/supporters";
 
 function ActivistDashboard() {
   const navigate = useNavigate();
+  const [metrics, setMetrics] = useState<ReferralMetricsResponse | null>(null);
+  const [isLoadingMetrics, setIsLoadingMetrics] = useState(true);
+  const [metricsError, setMetricsError] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadMetrics() {
+      setIsLoadingMetrics(true);
+      setMetricsError("");
+
+      try {
+        const data = await getReferralMetrics();
+        if (isMounted) setMetrics(data);
+      } catch {
+        if (isMounted) {
+          setMetricsError("Nao foi possivel carregar as metricas de indicacao.");
+        }
+      } finally {
+        if (isMounted) setIsLoadingMetrics(false);
+      }
+    }
+
+    loadMetrics();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   function handleLogout() {
     logout();
@@ -23,6 +54,107 @@ function ActivistDashboard() {
       >
         <Title level={1}>Dashboard do Ativista</Title>
         <p>Bem-vindo(a)! Esta é sua área para acompanhar e fortalecer as ações da campanha.</p>
+
+        <Spacing size="sm" />
+
+        <Title level={3}>Metricas de indicacao</Title>
+
+        {isLoadingMetrics ? <p>Carregando metricas...</p> : null}
+
+        {metricsError ? (
+          <p style={{ color: "var(--color-feedback-error)", fontWeight: 600 }}>{metricsError}</p>
+        ) : null}
+
+        {metrics ? (
+          <Boxed
+            gap="sm"
+            style={{
+              border: "1px solid var(--color-border-subtle)",
+              borderRadius: "16px",
+              background: "var(--color-surface-soft)",
+            }}
+          >
+            {metrics.isDemoData ? (
+              <small style={{ color: "var(--color-text-tertiary)", fontWeight: 600 }}>
+                Exibindo dados de demonstracao ate a API de metricas ficar disponivel.
+              </small>
+            ) : null}
+
+            <Boxed direction="row" gap="sm" wrap padding="none" align="stretch">
+              <Boxed
+                centered={false}
+                gap="xxs"
+                style={{
+                  flex: "1 1 180px",
+                  border: "1px solid var(--color-border-subtle)",
+                  borderRadius: "12px",
+                  background: "var(--color-surface-base)",
+                }}
+              >
+                <strong>Total de apoiadores</strong>
+                <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.totalSupporters}</p>
+              </Boxed>
+
+              <Boxed
+                centered={false}
+                gap="xxs"
+                style={{
+                  flex: "1 1 180px",
+                  border: "1px solid var(--color-border-subtle)",
+                  borderRadius: "12px",
+                  background: "var(--color-surface-base)",
+                }}
+              >
+                <strong>Com codigo de indicacao</strong>
+                <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.withReferral}</p>
+              </Boxed>
+
+              <Boxed
+                centered={false}
+                gap="xxs"
+                style={{
+                  flex: "1 1 180px",
+                  border: "1px solid var(--color-border-subtle)",
+                  borderRadius: "12px",
+                  background: "var(--color-surface-base)",
+                }}
+              >
+                <strong>Sem codigo de indicacao</strong>
+                <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.withoutReferral}</p>
+              </Boxed>
+            </Boxed>
+
+            <Spacing size="xs" />
+
+            <strong>Ranking por `referredByActivistCode`</strong>
+
+            {metrics.byCode.length > 0 ? (
+              <Boxed padding="none" gap="xs">
+                {metrics.byCode.slice(0, 10).map((item, index) => (
+                  <Boxed
+                    key={item.code}
+                    direction="row"
+                    align="center"
+                    justify="between"
+                    padding="sm"
+                    style={{
+                      borderRadius: "12px",
+                      border: "1px solid var(--color-border-subtle)",
+                      background: "var(--color-surface-base)",
+                    }}
+                  >
+                    <span style={{ fontWeight: 700 }}>
+                      {index + 1}. {item.code}
+                    </span>
+                    <span style={{ fontWeight: 800 }}>{item.total} apoiadores</span>
+                  </Boxed>
+                ))}
+              </Boxed>
+            ) : (
+              <p>Ainda nao existem apoiadores vinculados por codigo.</p>
+            )}
+          </Boxed>
+        ) : null}
 
         <Spacing size="sm" />
 
