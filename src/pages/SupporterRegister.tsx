@@ -11,6 +11,7 @@ import {
   PasswordInput,
   PhoneInput,
   Spacing,
+  ToastAlert,
   Title,
 } from "@/components";
 import { registerSupporter } from "@/services/auth";
@@ -114,6 +115,8 @@ function SupporterRegister() {
 
   return (
     <main>
+      <ToastAlert message={errorMessage} title="Nao foi possivel continuar" onClose={() => setErrorMessage("")} />
+
       <Boxed
         maxWidth="sm"
         gap="md"
@@ -275,13 +278,6 @@ function SupporterRegister() {
           <Button type="submit" disabled={isLoading} fullWidth>
             {isLoading ? "Criando conta..." : "Criar conta de apoiador"}
           </Button>
-
-          {errorMessage ? (
-            <>
-              <Spacing size="sm" />
-              <p style={{ color: "var(--color-feedback-error)", fontWeight: 600 }}>{errorMessage}</p>
-            </>
-          ) : null}
         </form>
 
         <Spacing size="md" />

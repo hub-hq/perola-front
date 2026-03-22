@@ -19,6 +19,7 @@ export { Section } from "./Section";
 export { default as SelectInput } from "./SelectInput";
 export { default as Spacing } from "./Spacing";
 export { default as TextAreaInput } from "./TextAreaInput";
+export { default as ToastAlert } from "./ToastAlert";
 export { default as Title } from "./Title";
 export { Timeline } from "./Timeline";
 export type { TimelineMilestone } from "./Timeline";

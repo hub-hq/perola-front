@@ -13,6 +13,7 @@ import {
   PhoneInput,
   SelectInput,
   Spacing,
+  ToastAlert,
   Title,
 } from "@/components";
 import { registerActivist } from "@/services/auth";
@@ -124,6 +125,8 @@ function ActivistRegister() {
 
   return (
     <main>
+      <ToastAlert message={errorMessage} title="Nao foi possivel continuar" onClose={() => setErrorMessage("")} />
+
       <Boxed
         maxWidth="sm"
         gap="md"
@@ -309,13 +312,6 @@ function ActivistRegister() {
           <Button type="submit" disabled={isLoading} fullWidth>
             {isLoading ? "Criando conta..." : "Criar conta de ativista"}
           </Button>
-
-          {errorMessage ? (
-            <>
-              <Spacing size="sm" />
-              <p style={{ color: "var(--color-feedback-error)", fontWeight: 600 }}>{errorMessage}</p>
-            </>
-          ) : null}
         </form>
 
         <Spacing size="md" />
