@@ -1,0 +1,61 @@
+.site-header {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-soft);
+}
+
+.site-header__top {
+  justify-content: center;
+  text-align: center;
+}
+
+.site-header__brand-link {
+  font-weight: 800;
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.site-header__nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.site-header__nav-item {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.site-header__campaign-card {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  background: var(--color-accent-soft);
+}
+
+.site-header__campaign-title {
+  font-size: 1.05rem;
+}
+
+.site-header__pill {
+  border: 1px solid var(--color-border-accent);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 900px) {
+  .site-header__top {
+    justify-content: space-between;
+  }
+
+  .site-header__brand-link {
+    width: auto;
+    text-align: left;
+  }
+
+  .site-header__nav {
+    width: auto;
+    justify-content: flex-end;
+  }
+}

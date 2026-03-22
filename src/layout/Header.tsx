@@ -1,51 +1,34 @@
 import { Link } from "react-router-dom";
 import { Boxed } from "@/components";
-
-const navItemStyle = {
-  fontWeight: 600,
-  fontSize: "0.95rem",
-};
-
-const pillStyle = {
-  border: "1px solid var(--color-border-accent)",
-  borderRadius: "9999px",
-  padding: "6px 12px",
-  fontSize: "0.85rem",
-};
+import "@/styles/layouts/header.scss";
 
 export function Header() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <header
-      style={{
-        width: "100%",
-        borderBottom: "1px solid var(--color-border-subtle)",
-        background: "var(--color-surface-soft)",
-      }}
-    >
+    <header className="site-header">
       <Boxed maxWidth="xl" padding="lg" gap="md">
         <Boxed
           direction="row"
           align="center"
-          justify="between"
           wrap
           gap="sm"
           padding="none"
+          className="site-header__top"
         >
-          <Link to="/" style={{ fontWeight: 800, fontSize: "1.1rem" }}>
+          <Link to="/" className="site-header__brand-link">
             Pérola {currentYear}
           </Link>
 
-          <nav aria-label="Navegação principal">
+          <nav aria-label="Navegação principal" className="site-header__nav">
             <Boxed direction="row" gap="md" align="center" wrap padding="none">
-              <Link to="/sobre" style={navItemStyle}>
+              <Link to="/sobre" className="site-header__nav-item">
                 Sobre
               </Link>
-              <Link to="/trajetoria" style={navItemStyle}>
+              <Link to="/trajetoria" className="site-header__nav-item">
                 Trajetória
               </Link>
-              <Link to="/seja-apoiador" style={navItemStyle}>
+              <Link to="/seja-apoiador" className="site-header__nav-item">
                 Seja Apoiador
               </Link>
             </Boxed>
@@ -55,13 +38,9 @@ export function Header() {
         <Boxed
           padding="md"
           gap="sm"
-          style={{
-            border: "1px solid var(--color-border-subtle)",
-            borderRadius: "16px",
-            background: "var(--color-accent-soft)",
-          }}
+          className="site-header__campaign-card"
         >
-          <strong style={{ fontSize: "1.05rem" }}>
+          <strong className="site-header__campaign-title">
             Pérola Sampaio — Pré-candidata a Deputada Federal
           </strong>
           <p>
@@ -74,12 +53,12 @@ export function Header() {
           </Boxed>
         </Boxed>
 
-        <Boxed direction="row" gap="xs" wrap padding="none" align="center">
-          <span style={pillStyle}>Saúde Pública</span>
-          <span style={pillStyle}>Direitos das Mulheres</span>
-          <span style={pillStyle}>Inclusão Social</span>
-          <span style={pillStyle}>Participação Popular</span>
-          <span style={pillStyle}>Direitos Humanos</span>
+        <Boxed direction="row" gap="xs" wrap padding="none" align="center" justify="center">
+          <span className="site-header__pill">Saúde Pública</span>
+          <span className="site-header__pill">Direitos das Mulheres</span>
+          <span className="site-header__pill">Inclusão Social</span>
+          <span className="site-header__pill">Participação Popular</span>
+          <span className="site-header__pill">Direitos Humanos</span>
         </Boxed>
       </Boxed>
     </header>
