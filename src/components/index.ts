@@ -8,6 +8,7 @@ export { default as CpfInput } from "./CpfInput";
 export { default as DateInput } from "./DateInput";
 export { default as DateTimeInput } from "./DateTimeInput";
 export { default as EmailInput } from "./EmailInput";
+export { default as FieldError } from "./FieldError";
 export { default as Icon } from "./Icon";
 export { default as Img } from "./Img";
 export { default as LabelInput } from "./LabelInput";

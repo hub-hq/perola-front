@@ -7,6 +7,7 @@ import {
   CheckBoxInput,
   CpfInput,
   EmailInput,
+  FieldError,
   LabelInput,
   PasswordInput,
   PhoneInput,
@@ -21,12 +22,6 @@ type ActivistField = "cpf" | "email" | "phone" | "activistCode" | "confirmPasswo
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
-} as const;
-
-const fieldErrorTextStyle = {
-  color: "var(--color-feedback-error)",
-  fontSize: "0.85rem",
-  fontWeight: 600,
 } as const;
 
 function ActivistRegister() {
@@ -152,10 +147,11 @@ function ActivistRegister() {
             id="activist-register-cpf"
             name="cpf"
             style={fieldErrors.cpf ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.cpf ? "true" : undefined}
             onChange={() => clearFieldError("cpf")}
             required
           />
-          {fieldErrors.cpf ? <small style={fieldErrorTextStyle}>{fieldErrors.cpf}</small> : null}
+          <FieldError message={fieldErrors.cpf} />
 
           <Spacing size="md" />
 
@@ -167,10 +163,11 @@ function ActivistRegister() {
             placeholder="seuemail@exemplo.com"
             autoComplete="email"
             style={fieldErrors.email ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.email ? "true" : undefined}
             onChange={() => clearFieldError("email")}
             required
           />
-          {fieldErrors.email ? <small style={fieldErrorTextStyle}>{fieldErrors.email}</small> : null}
+          <FieldError message={fieldErrors.email} />
 
           <Spacing size="md" />
 
@@ -182,10 +179,11 @@ function ActivistRegister() {
             autoComplete="tel"
             placeholder="(00) 00000-0000"
             style={fieldErrors.phone ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.phone ? "true" : undefined}
             onChange={() => clearFieldError("phone")}
             required
           />
-          {fieldErrors.phone ? <small style={fieldErrorTextStyle}>{fieldErrors.phone}</small> : null}
+          <FieldError message={fieldErrors.phone} />
 
           <Spacing size="md" />
 
@@ -232,12 +230,11 @@ function ActivistRegister() {
             autoComplete="new-password"
             placeholder="Repita sua senha"
             style={fieldErrors.confirmPassword ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.confirmPassword ? "true" : undefined}
             onChange={() => clearFieldError("confirmPassword")}
             required
           />
-          {fieldErrors.confirmPassword ? (
-            <small style={fieldErrorTextStyle}>{fieldErrors.confirmPassword}</small>
-          ) : null}
+          <FieldError message={fieldErrors.confirmPassword} />
 
           <Spacing size="lg" />
 
@@ -281,11 +278,10 @@ function ActivistRegister() {
             id="activist-register-code"
             name="activistCode"
             style={fieldErrors.activistCode ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.activistCode ? "true" : undefined}
             onChange={() => clearFieldError("activistCode")}
           />
-          {fieldErrors.activistCode ? (
-            <small style={fieldErrorTextStyle}>{fieldErrors.activistCode}</small>
-          ) : null}
+          <FieldError message={fieldErrors.activistCode} />
 
           <Spacing size="md" />
 

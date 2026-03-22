@@ -6,6 +6,7 @@ import {
   Button,
   CheckBoxInput,
   EmailInput,
+  FieldError,
   LabelInput,
   PasswordInput,
   PhoneInput,
@@ -19,12 +20,6 @@ type SupporterField = "email" | "phone" | "referredByActivistCode" | "confirmPas
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
-} as const;
-
-const fieldErrorTextStyle = {
-  color: "var(--color-feedback-error)",
-  fontSize: "0.85rem",
-  fontWeight: 600,
 } as const;
 
 function SupporterRegister() {
@@ -144,10 +139,11 @@ function SupporterRegister() {
             placeholder="seuemail@exemplo.com"
             autoComplete="email"
             style={fieldErrors.email ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.email ? "true" : undefined}
             onChange={() => clearFieldError("email")}
             required
           />
-          {fieldErrors.email ? <small style={fieldErrorTextStyle}>{fieldErrors.email}</small> : null}
+          <FieldError message={fieldErrors.email} />
 
           <Spacing size="md" />
 
@@ -159,10 +155,11 @@ function SupporterRegister() {
             autoComplete="tel"
             placeholder="(00) 00000-0000"
             style={fieldErrors.phone ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.phone ? "true" : undefined}
             onChange={() => clearFieldError("phone")}
             required
           />
-          {fieldErrors.phone ? <small style={fieldErrorTextStyle}>{fieldErrors.phone}</small> : null}
+          <FieldError message={fieldErrors.phone} />
 
           <Spacing size="md" />
 
@@ -209,12 +206,11 @@ function SupporterRegister() {
             autoComplete="new-password"
             placeholder="Repita sua senha"
             style={fieldErrors.confirmPassword ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.confirmPassword ? "true" : undefined}
             onChange={() => clearFieldError("confirmPassword")}
             required
           />
-          {fieldErrors.confirmPassword ? (
-            <small style={fieldErrorTextStyle}>{fieldErrors.confirmPassword}</small>
-          ) : null}
+          <FieldError message={fieldErrors.confirmPassword} />
 
           <Spacing size="lg" />
 
@@ -234,11 +230,10 @@ function SupporterRegister() {
             id="supporter-register-code"
             name="referredByActivistCode"
             style={fieldErrors.referredByActivistCode ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.referredByActivistCode ? "true" : undefined}
             onChange={() => clearFieldError("referredByActivistCode")}
           />
-          {fieldErrors.referredByActivistCode ? (
-            <small style={fieldErrorTextStyle}>{fieldErrors.referredByActivistCode}</small>
-          ) : null}
+          <FieldError message={fieldErrors.referredByActivistCode} />
 
           <Spacing size="md" />
 
