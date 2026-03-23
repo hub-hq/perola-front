@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   ActivistCodeInput,
   Boxed,
@@ -25,8 +26,11 @@ const fieldErrorStyle = {
 
 function SupporterRegister() {
   const navigate = useNavigate();
+  const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string | undefined;
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<SupporterField, string>>>({});
 
   function clearFieldError(field: SupporterField) {
@@ -86,6 +90,16 @@ function SupporterRegister() {
       return;
     }
 
+    if (!recaptchaSiteKey) {
+      setErrorMessage("ReCAPTCHA indisponível no momento. Tente novamente mais tarde.");
+      return;
+    }
+
+    if (!recaptchaToken) {
+      setErrorMessage("Confirme que você não é um robô.");
+      return;
+    }
+
     setIsLoading(true);
     setErrorMessage("");
     setFieldErrors({});
@@ -100,6 +114,7 @@ function SupporterRegister() {
         areaOfAction,
         role,
         password,
+        recaptchaToken,
         party: party || undefined,
         referredByActivistCode: referredByActivistCode || undefined,
         isPtMember,
@@ -274,6 +289,20 @@ function SupporterRegister() {
               Li e aceito os termos de uso e <Link to="/politica-privacidade">política de privacidade</Link>.
             </label>
           </Boxed>
+
+          <Spacing size="md" />
+
+          {recaptchaSiteKey ? (
+            <ReCAPTCHA
+              sitekey={recaptchaSiteKey}
+              onChange={(token: string | null) => setRecaptchaToken(token)}
+              onExpired={() => setRecaptchaToken(null)}
+            />
+          ) : (
+            <small style={{ color: "var(--color-feedback-error)" }}>
+              ReCAPTCHA não configurado. Defina `VITE_RECAPTCHA_SITE_KEY` no ambiente.
+            </small>
+          )}
 
           <Spacing size="lg" />
 

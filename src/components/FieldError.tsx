@@ -5,8 +5,10 @@ type FieldErrorProps = {
 };
 
 function FieldError({ message }: FieldErrorProps) {
+  const hasMessage = Boolean(message?.trim());
+
   return (
-    <div className="field-error-slot">
+    <div className={`field-error-slot${hasMessage ? " field-error-slot--visible" : ""}`}>
       <small className="field-error">{message ?? ""}</small>
     </div>
   );

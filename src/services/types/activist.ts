@@ -8,6 +8,7 @@ export type RegisterActivistPayload = {
   areaOfAction: string;
   role: string;
   password: string;
+  recaptchaToken: string;
   leadershipLevel?: string;
   locality?: string;
   instagram?: string;
