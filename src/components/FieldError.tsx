@@ -1,4 +1,4 @@
-import "@/styles/components/field-error.scss";
+import "@/styles/components/FieldError.scss";
 
 type FieldErrorProps = {
   message?: string;

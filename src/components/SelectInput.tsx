@@ -1,5 +1,5 @@
 import type { SelectHTMLAttributes } from "react";
-import "@/styles/components/form-controls.scss";
+import "@/styles/components/FormControls.scss";
 
 type SelectOption = {
   label: string;

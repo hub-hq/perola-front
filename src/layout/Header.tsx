@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Boxed } from "@/components";
-import "@/styles/layouts/header.scss";
+import "@/styles/layouts/Header.scss";
 
 export function Header() {
   const currentYear = new Date().getFullYear();

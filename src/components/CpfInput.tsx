@@ -1,5 +1,5 @@
 import type { ChangeEvent, InputHTMLAttributes } from "react";
-import "@/styles/components/form-controls.scss";
+import "@/styles/components/FormControls.scss";
 
 type CpfInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "@/styles/components/toast-alert.scss";
+import "@/styles/components/ToastAlert.scss";
 
 type ToastAlertProps = {
   message?: string;
