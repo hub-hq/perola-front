@@ -1,5 +1,5 @@
 import { Boxed, Title } from "@/components";
-import styles from "@/styles/components/Timeline.module.scss";
+import "@/styles/components/Timeline.scss";
 
 export type TimelineMilestone = {
   year: string;
@@ -25,35 +25,19 @@ export function Timeline({ milestones }: TimelineProps) {
           style={{ width: "100%" }}
         >
           {/* Rail — nó + linha conectora */}
-          <div className={styles.rail}>
+          <div className="timeline-rail">
             {index > 0 && (
-              <span
-                className={styles.connectionTop}
-                style={{ background: "var(--color-border-accent)" }}
-                aria-hidden
-              />
+              <span className="timeline-connection-top" aria-hidden />
             )}
             {index < milestones.length - 1 && (
-              <span
-                className={styles.connectionBottom}
-                style={{ background: "var(--color-border-accent)" }}
-                aria-hidden
-              />
+              <span className="timeline-connection-bottom" aria-hidden />
             )}
 
-            <span
-              className={styles.node}
-              style={{
-                border: "2px solid var(--color-border-accent)",
-                background:
-                  "linear-gradient(var(--color-accent-soft-strong), var(--color-accent-soft-strong)), var(--color-surface-base)",
-              }}
-              aria-hidden
-            >
+            <span className="timeline-node" aria-hidden>
               {item.icon}
             </span>
 
-            <strong className={styles.year} style={{ color: "var(--color-brand-primary)" }}>
+            <strong className="timeline-year">
               {item.year}
             </strong>
           </div>

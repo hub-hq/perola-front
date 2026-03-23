@@ -1,4 +1,4 @@
-.rail {
+.timeline-rail {
   --timeline-node-top: 6px;
   --timeline-node-size: 42px;
   width: 72px;
@@ -11,60 +11,64 @@
   gap: 4px;
 }
 
-.connectionTop,
-.connectionBottom {
+.timeline-connection-top,
+.timeline-connection-bottom {
   position: absolute;
   left: 50%;
   width: 2px;
   transform: translateX(-50%);
   z-index: 0;
+  background: var(--color-border-accent);
 }
 
-.connectionTop {
+.timeline-connection-top {
   top: 0;
   height: var(--timeline-node-top);
 }
 
-.connectionBottom {
+.timeline-connection-bottom {
   top: calc(var(--timeline-node-top) + var(--timeline-node-size));
   bottom: 0;
 }
 
-.node {
+.timeline-node {
   display: inline-flex;
   width: var(--timeline-node-size);
   height: var(--timeline-node-size);
+  border: 2px solid var(--color-border-accent);
   border-radius: 9999px;
   align-items: center;
   justify-content: center;
   font-size: 1.15rem;
+  background: linear-gradient(var(--color-accent-soft-strong), var(--color-accent-soft-strong)), var(--color-surface-base);
   position: relative;
   z-index: 1;
 }
 
-.year {
+.timeline-year {
   display: inline-block;
   position: relative;
   z-index: 2;
   padding: 0 4px;
   line-height: 1.1;
   background: var(--color-surface-page);
+  color: var(--color-brand-primary);
   font-size: 1rem;
   font-weight: 700;
 }
 
 @media (max-width: 479px) {
-  .rail {
+  .timeline-rail {
     --timeline-node-size: 32px;
     width: 48px;
     flex: 0 0 48px;
   }
 
-  .node {
+  .timeline-node {
     font-size: 0.9rem;
   }
 
-  .year {
+  .timeline-year {
     font-size: 0.75rem;
   }
 }
