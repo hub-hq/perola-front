@@ -7,7 +7,7 @@ export type RegisterSupporterPayload = {
   areaOfAction: string;
   role: string;
   password: string;
-  recaptchaToken: string;
+  captchaToken: string;
   party?: string;
   referredByActivistCode?: string;
   isPtMember?: boolean;

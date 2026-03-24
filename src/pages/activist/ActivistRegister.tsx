@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
+import { Turnstile } from "@marsidev/react-turnstile";
 import {
   Boxed,
   Button,
@@ -27,11 +27,11 @@ const fieldErrorStyle = {
 
 function ActivistRegister() {
   const navigate = useNavigate();
-  const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string | undefined;
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<ActivistField, string>>>({});
 
   function clearFieldError(field: ActivistField) {
@@ -91,13 +91,13 @@ function ActivistRegister() {
       return;
     }
 
-    if (!recaptchaSiteKey) {
-      setErrorMessage("ReCAPTCHA indisponível no momento. Tente novamente mais tarde.");
+    if (!turnstileSiteKey) {
+      setErrorMessage("Validação anti-bot indisponível no momento. Tente novamente mais tarde.");
       return;
     }
 
-    if (!recaptchaToken) {
-      setErrorMessage("Confirme que você não é um robô.");
+    if (!captchaToken) {
+      setErrorMessage("Confirme a validação anti-bot.");
       return;
     }
 
@@ -116,7 +116,7 @@ function ActivistRegister() {
         areaOfAction,
         role,
         password,
-        recaptchaToken,
+        captchaToken,
         leadershipLevel: leadershipLevel || undefined,
         locality: locality || undefined,
         instagram: instagram || undefined,
@@ -298,17 +298,21 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          {recaptchaSiteKey ? (
-            <ReCAPTCHA
-              sitekey={recaptchaSiteKey}
-              onChange={(token: string | null) => setRecaptchaToken(token)}
-              onExpired={() => setRecaptchaToken(null)}
-            />
-          ) : (
-            <small style={{ color: "var(--color-feedback-error)" }}>
-              ReCAPTCHA não configurado. Defina `VITE_RECAPTCHA_SITE_KEY` no ambiente.
-            </small>
-          )}
+          <Boxed padding="none" align="center">
+            {turnstileSiteKey ? (
+              <Turnstile
+                siteKey={turnstileSiteKey}
+                options={{ language: "pt-BR", theme: "light" }}
+                onSuccess={(token) => setCaptchaToken(token)}
+                onExpire={() => setCaptchaToken(null)}
+                onError={() => setCaptchaToken(null)}
+              />
+            ) : (
+              <small style={{ color: "var(--color-feedback-error)", textAlign: "center" }}>
+                Turnstile não configurado. Defina `VITE_TURNSTILE_SITE_KEY` no ambiente.
+              </small>
+            )}
+          </Boxed>
 
           <Spacing size="lg" />
 
