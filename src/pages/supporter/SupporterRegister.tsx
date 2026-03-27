@@ -18,10 +18,15 @@ import {
 import { registerSupporter } from "@/services/auth";
 import { isValidActivistCode, isValidBrazilianPhone, isValidEmail, isValidName } from "@/utils/validators";
 
-type SupporterField = "name" | "email" | "phone" | "referredByActivistCode" | "confirmPassword";
+type SupporterField = "name" | "email" | "phone" | "city" | "password" | "referredByActivistCode" | "confirmPassword";
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
+} as const;
+
+const requiredMarkStyle = {
+  color: "var(--color-feedback-error)",
+  fontWeight: 700,
 } as const;
 
 function SupporterRegister() {
@@ -74,6 +79,14 @@ function SupporterRegister() {
 
     if (!isValidBrazilianPhone(phone)) {
       nextFieldErrors.phone = "Celular inválido. Use DDD + número (10 ou 11 dígitos).";
+    }
+
+    if (!city) {
+      nextFieldErrors.city = "Cidade é obrigatória.";
+    }
+
+    if (!password.trim()) {
+      nextFieldErrors.password = "Senha é obrigatória.";
     }
 
     if (referredByActivistCode && !isValidActivistCode(referredByActivistCode)) {
@@ -144,10 +157,16 @@ function SupporterRegister() {
         <Title level={1}>Cadastro de Apoiador</Title>
         <p>Dados básicos para contato e relacionamento com a campanha.</p>
 
+        <Spacing size="xxs" />
+
+        <small style={{ color: "var(--color-text-tertiary)" }}>
+          <span style={requiredMarkStyle}>*</span> Campos obrigatórios
+        </small>
+
         <Spacing size="sm" />
 
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="supporter-register-name">Nome completo</label>
+          <label htmlFor="supporter-register-name">Nome completo <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput
             id="supporter-register-name"
@@ -163,7 +182,7 @@ function SupporterRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-email">E-mail</label>
+          <label htmlFor="supporter-register-email">E-mail <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <EmailInput
             id="supporter-register-email"
@@ -179,7 +198,7 @@ function SupporterRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-phone">Celular</label>
+          <label htmlFor="supporter-register-phone">Celular <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <PhoneInput
             id="supporter-register-phone"
@@ -195,19 +214,28 @@ function SupporterRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-region">Área e bairro</label>
+          <label htmlFor="supporter-register-region">Área e bairro <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput id="supporter-register-region" name="region" placeholder="Ex.: Zona Sul" required />
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-city">Cidade</label>
+          <label htmlFor="supporter-register-city">Cidade <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
-          <LabelInput id="supporter-register-city" name="city" placeholder="Ex.: Porto Alegre" required />
+          <LabelInput
+            id="supporter-register-city"
+            name="city"
+            placeholder="Ex.: Porto Alegre"
+            style={fieldErrors.city ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.city ? "true" : undefined}
+            onChange={() => clearFieldError("city")}
+            required
+          />
+          <FieldError message={fieldErrors.city} />
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-area">Área de atuação</label>
+          <label htmlFor="supporter-register-area">Área de atuação <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput
             id="supporter-register-area"
@@ -218,19 +246,29 @@ function SupporterRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-role">Cargo ou função</label>
+          <label htmlFor="supporter-register-role">Cargo ou função <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput id="supporter-register-role" name="role" placeholder="Ex.: professora, agente de saúde" required />
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-password">Senha</label>
+          <label htmlFor="supporter-register-password">Senha <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
-          <PasswordInput id="supporter-register-password" name="password" autoComplete="new-password" placeholder="Crie uma senha" required />
+          <PasswordInput
+            id="supporter-register-password"
+            name="password"
+            autoComplete="new-password"
+            placeholder="Crie uma senha"
+            style={fieldErrors.password ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.password ? "true" : undefined}
+            onChange={() => clearFieldError("password")}
+            required
+          />
+          <FieldError message={fieldErrors.password} />
 
           <Spacing size="md" />
 
-          <label htmlFor="supporter-register-confirm-password">Confirmar senha</label>
+          <label htmlFor="supporter-register-confirm-password">Confirmar senha <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <PasswordInput
             id="supporter-register-confirm-password"

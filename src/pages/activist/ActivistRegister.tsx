@@ -19,10 +19,15 @@ import {
 import { registerActivist } from "@/services/auth";
 import { isValidBrazilianPhone, isValidCpf, isValidEmail, isValidName } from "@/utils/validators";
 
-type ActivistField = "name" | "cpf" | "email" | "phone" | "confirmPassword";
+type ActivistField = "name" | "cpf" | "email" | "phone" | "city" | "password" | "confirmPassword";
 
 const fieldErrorStyle = {
   border: "1px solid var(--color-feedback-error)",
+} as const;
+
+const requiredMarkStyle = {
+  color: "var(--color-feedback-error)",
+  fontWeight: 700,
 } as const;
 
 function ActivistRegister() {
@@ -79,6 +84,14 @@ function ActivistRegister() {
 
     if (!isValidBrazilianPhone(phone)) {
       nextFieldErrors.phone = "Celular inválido. Use DDD + número (10 ou 11 dígitos).";
+    }
+
+    if (!city) {
+      nextFieldErrors.city = "Cidade é obrigatória.";
+    }
+
+    if (!password.trim()) {
+      nextFieldErrors.password = "Senha é obrigatória.";
     }
 
     if (password !== confirmPassword) {
@@ -145,10 +158,16 @@ function ActivistRegister() {
         <Title level={1}>Cadastro de Ativista</Title>
         <p>Perfil de liderança para mobilização territorial.</p>
 
+        <Spacing size="xxs" />
+
+        <small style={{ color: "var(--color-text-tertiary)" }}>
+          <span style={requiredMarkStyle}>*</span> Campos obrigatórios
+        </small>
+
         <Spacing size="sm" />
 
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="activist-register-name">Nome completo</label>
+          <label htmlFor="activist-register-name">Nome completo <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput
             id="activist-register-name"
@@ -164,7 +183,7 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-cpf">CPF</label>
+          <label htmlFor="activist-register-cpf">CPF <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <CpfInput
             id="activist-register-cpf"
@@ -178,7 +197,7 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-email">E-mail</label>
+          <label htmlFor="activist-register-email">E-mail <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <EmailInput
             id="activist-register-email"
@@ -194,7 +213,7 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-phone">Celular</label>
+          <label htmlFor="activist-register-phone">Celular <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <PhoneInput
             id="activist-register-phone"
@@ -210,19 +229,28 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-city">Cidade</label>
+          <label htmlFor="activist-register-city">Cidade <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
-          <LabelInput id="activist-register-city" name="city" placeholder="Ex.: Porto Alegre" required />
+          <LabelInput
+            id="activist-register-city"
+            name="city"
+            placeholder="Ex.: Porto Alegre"
+            style={fieldErrors.city ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.city ? "true" : undefined}
+            onChange={() => clearFieldError("city")}
+            required
+          />
+          <FieldError message={fieldErrors.city} />
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-region">Região/Bairro de atuação</label>
+          <label htmlFor="activist-register-region">Região/Bairro de atuação <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput id="activist-register-region" name="region" placeholder="Ex.: Zona Norte" required />
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-area">Área de atuação</label>
+          <label htmlFor="activist-register-area">Área de atuação <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput
             id="activist-register-area"
@@ -233,19 +261,29 @@ function ActivistRegister() {
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-role">Cargo/função</label>
+          <label htmlFor="activist-register-role">Cargo/função <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <LabelInput id="activist-register-role" name="role" placeholder="Ex.: liderança comunitária" required />
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-password">Senha</label>
+          <label htmlFor="activist-register-password">Senha <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
-          <PasswordInput id="activist-register-password" name="password" autoComplete="new-password" placeholder="Crie uma senha" required />
+          <PasswordInput
+            id="activist-register-password"
+            name="password"
+            autoComplete="new-password"
+            placeholder="Crie uma senha"
+            style={fieldErrors.password ? fieldErrorStyle : undefined}
+            aria-invalid={fieldErrors.password ? "true" : undefined}
+            onChange={() => clearFieldError("password")}
+            required
+          />
+          <FieldError message={fieldErrors.password} />
 
           <Spacing size="md" />
 
-          <label htmlFor="activist-register-confirm-password">Confirmar senha</label>
+          <label htmlFor="activist-register-confirm-password">Confirmar senha <span style={requiredMarkStyle} aria-hidden="true">*</span></label>
           <Spacing size="xs" />
           <PasswordInput
             id="activist-register-confirm-password"
