@@ -1,202 +1,67 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Boxed, Button, Spacing, Title } from "@/components";
+import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAuthenticatedUser, logout } from "@/services/auth";
-import { getReferralMetrics, type ReferralMetricsResponse } from "@/services/supporters";
+import { AdminShell, type AdminNavItem } from "@/pages/admin/components/AdminShell";
+import { AdminActivistsModule } from "@/pages/admin/modules/AdminActivistsModule";
+import { AdminHomeModule } from "@/pages/admin/modules/AdminHomeModule";
+import { AdminOldModule } from "@/pages/admin/modules/AdminOldModule";
+import { AdminReportsModule } from "@/pages/admin/modules/AdminReportsModule";
+import { AdminSettingsModule } from "@/pages/admin/modules/AdminSettingsModule";
+import { AdminSupportersModule } from "@/pages/admin/modules/AdminSupportersModule";
+
+type AdminModuleKey = "home" | "reports" | "supporters" | "activists" | "settings" | "old";
+
+const adminNavItems: AdminNavItem[] = [
+  { key: "home", label: "Home" },
+  { key: "reports", label: "Relatorios" },
+  { key: "supporters", label: "Apoiadores" },
+  { key: "activists", label: "Ativistas" },
+  { key: "settings", label: "Configuracoes" },
+  { key: "old", label: "Old" },
+];
 
 function AdminDashboard() {
   const navigate = useNavigate();
   const authenticatedUser = getAuthenticatedUser();
   const isMockSession = authenticatedUser?.isMock === true;
-  const [metrics, setMetrics] = useState<ReferralMetricsResponse | null>(null);
-  const [isLoadingMetrics, setIsLoadingMetrics] = useState(true);
-  const [metricsError, setMetricsError] = useState("");
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadMetrics() {
-      setIsLoadingMetrics(true);
-      setMetricsError("");
-
-      try {
-        const data = await getReferralMetrics();
-        if (isMounted) setMetrics(data);
-      } catch {
-        if (isMounted) {
-          setMetricsError("Não foi possível carregar as métricas de indicação.");
-        }
-      } finally {
-        if (isMounted) setIsLoadingMetrics(false);
-      }
-    }
-
-    loadMetrics();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const [activeModule, setActiveModule] = useState<AdminModuleKey>("home");
 
   function handleLogout() {
     logout();
-    navigate("/ativista/login");
+    navigate("/login");
   }
 
+  const activeModuleNode = useMemo(() => {
+    switch (activeModule) {
+      case "home":
+        return <AdminHomeModule />;
+      case "reports":
+        return <AdminReportsModule />;
+      case "supporters":
+        return <AdminSupportersModule />;
+      case "activists":
+        return <AdminActivistsModule />;
+      case "settings":
+        return <AdminSettingsModule />;
+      case "old":
+        return <AdminOldModule isMockSession={isMockSession} />;
+      default:
+        return <AdminHomeModule />;
+    }
+  }, [activeModule, isMockSession]);
+
   return (
-    <main>
-      <Boxed
-        maxWidth="md"
-        gap="md"
-        style={{
-          border: "1px solid var(--color-border-subtle)",
-          borderRadius: "24px",
-          background: "var(--color-surface-base)",
-        }}
-      >
-        <Title level={1}>Dashboard Administrativo</Title>
-        <p>Bem-vindo(a)! Esta é a área administrativa para acompanhar os indicadores da campanha.</p>
-
-        {isMockSession ? (
-          <Boxed
-            centered={false}
-            gap="xxs"
-            style={{
-              border: "1px dashed var(--color-border-soft)",
-              borderRadius: "12px",
-              background: "var(--color-surface-soft)",
-            }}
-          >
-            <strong style={{ fontSize: "0.9rem" }}>Ambiente de demonstração</strong>
-            <small style={{ color: "var(--color-text-tertiary)" }}>
-              Sessão mock ativa para testes de navegação e dashboard.
-            </small>
-          </Boxed>
-        ) : null}
-
-        <Spacing size="sm" />
-
-        <Title level={3}>Métricas de indicação</Title>
-
-        {isLoadingMetrics ? <p>Carregando métricas...</p> : null}
-
-        {metricsError ? (
-          <p style={{ color: "var(--color-feedback-error)", fontWeight: 600 }}>{metricsError}</p>
-        ) : null}
-
-        {metrics ? (
-          <Boxed
-            gap="sm"
-            style={{
-              border: "1px solid var(--color-border-subtle)",
-              borderRadius: "16px",
-              background: "var(--color-surface-soft)",
-            }}
-          >
-            {metrics.isDemoData ? (
-              <small style={{ color: "var(--color-text-tertiary)", fontWeight: 600 }}>
-                Exibindo dados de demonstração até a API de métricas ficar disponível.
-              </small>
-            ) : null}
-
-            <Boxed direction="row" gap="sm" wrap padding="none" align="stretch">
-              <Boxed
-                centered={false}
-                gap="xxs"
-                style={{
-                  flex: "1 1 180px",
-                  border: "1px solid var(--color-border-subtle)",
-                  borderRadius: "12px",
-                  background: "var(--color-surface-base)",
-                }}
-              >
-                <strong>Total de apoiadores</strong>
-                <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.totalSupporters}</p>
-              </Boxed>
-
-              <Boxed
-                centered={false}
-                gap="xxs"
-                style={{
-                  flex: "1 1 180px",
-                  border: "1px solid var(--color-border-subtle)",
-                  borderRadius: "12px",
-                  background: "var(--color-surface-base)",
-                }}
-              >
-                <strong>Com código de indicação</strong>
-                <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.withReferral}</p>
-              </Boxed>
-
-              <Boxed
-                centered={false}
-                gap="xxs"
-                style={{
-                  flex: "1 1 180px",
-                  border: "1px solid var(--color-border-subtle)",
-                  borderRadius: "12px",
-                  background: "var(--color-surface-base)",
-                }}
-              >
-                <strong>Sem código de indicação</strong>
-                <p style={{ fontSize: "1.35rem", fontWeight: 800 }}>{metrics.withoutReferral}</p>
-              </Boxed>
-            </Boxed>
-
-            <Spacing size="xs" />
-
-            <strong>Ranking por `referredByActivistCode`</strong>
-
-            {metrics.byCode.length > 0 ? (
-              <Boxed padding="none" gap="xs">
-                {metrics.byCode.slice(0, 10).map((item, index) => (
-                  <Boxed
-                    key={item.code}
-                    direction="row"
-                    align="center"
-                    justify="between"
-                    padding="sm"
-                    style={{
-                      borderRadius: "12px",
-                      border: "1px solid var(--color-border-subtle)",
-                      background: "var(--color-surface-base)",
-                    }}
-                  >
-                    <span style={{ fontWeight: 700 }}>
-                      {index + 1}. {item.code}
-                    </span>
-                    <span style={{ fontWeight: 800 }}>{item.total} apoiadores</span>
-                  </Boxed>
-                ))}
-              </Boxed>
-            ) : (
-              <p>Ainda não existem apoiadores vinculados por código.</p>
-            )}
-          </Boxed>
-        ) : null}
-
-        <Spacing size="sm" />
-
-        <Title level={3}>Ações rápidas</Title>
-
-        <Boxed direction="row" gap="sm" wrap padding="none" align="center">
-          <Link to="/" style={{ flex: "1 1 220px" }}>
-            <Button type="button" variant="secondary" fullWidth>
-              Ir para Home
-            </Button>
-          </Link>
-
-          <Button
-            type="button"
-            variant="outline"
-            onClick={handleLogout}
-            style={{ flex: "1 1 220px" }}
-          >
-            Sair
-          </Button>
-        </Boxed>
-      </Boxed>
-    </main>
+    <AdminShell
+      title="Dashboard Administrativo"
+      bannerText="Visao unificada da campanha com modulos por area para escalar operacoes e analises."
+      navItems={adminNavItems}
+      activeKey={activeModule}
+      onChangeModule={(key) => setActiveModule(key as AdminModuleKey)}
+      onLogout={handleLogout}
+      userName={authenticatedUser?.name}
+    >
+      {activeModuleNode}
+    </AdminShell>
   );
 }
 
