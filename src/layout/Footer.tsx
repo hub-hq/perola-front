@@ -58,7 +58,7 @@ export function Footer() {
 		>
 			<Boxed maxWidth="xl" padding="lg" gap="sm" align="center">
 				<strong style={{ textAlign: "center", fontSize: "1.05rem" }}>
-					Instituição Pérola
+					Pérola 1350
 				</strong>
 				<p>
 					Informação pública com transparência, participação e compromisso com a
@@ -126,10 +126,13 @@ export function Footer() {
 				<Spacing size="sm" />
 
 				<p style={{ textAlign: "center" }}>
-					Contato: <a href="mailto:contato@instituicaoperola.org.br">contato@instituicaoperola.org.br</a> e <a href="mailto:contato@perola.social.br">contato@perola.social.br</a>
+					Contato: <a href="mailto:contato@perola1350.com.br">contato@perola1350.com.br</a>
+				</p>
+				<p style={{ textAlign: "center", margin: "6px 0 0 0" }}>
+					Site: <a href="https://www.perola1350.com.br" target="_blank" rel="noreferrer">www.perola1350.com.br</a>
 				</p>
 				<small style={{ textAlign: "center" }}>
-					© {currentYear} Instituição Pérola. Todos os direitos reservados.
+					© {currentYear} Pérola 1350. Todos os direitos reservados.
 				</small>
 			</Boxed>
 		</footer>

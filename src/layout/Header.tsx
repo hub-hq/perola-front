@@ -18,7 +18,7 @@ export function Header() {
             className="site-header__top"
           >
             <Link to="/" className="site-header__brand-link">
-              Pérola {currentYear}
+              Pérola 1350
             </Link>
 
             <nav aria-label="Navegação principal" className="site-header__nav">
@@ -46,7 +46,7 @@ export function Header() {
             className="site-header__campaign-card"
           >
             <strong className="site-header__campaign-title">
-              Pérola Sampaio — Pré-candidata a Deputada Federal
+              Pérola Sampaio — Pré-candidata a Deputada Federal | {currentYear}
             </strong>
             <p>
               Campanha participativa com foco em saúde pública, direitos das
