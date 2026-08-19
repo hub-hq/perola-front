@@ -1,33 +1,43 @@
 :root {
-	--color-brand-primary: #e01e24;
-	--color-brand-hover: #b1161b;
-	--color-brand-soft: #f24f56;
+	--color-brand-primary: #F21B2A;
+	--color-brand-hover: #B51818;
+	--color-brand-soft: #FECA26;
 
-	--color-text-primary: #1b1b1b;
-	--color-text-heading: #111111;
-	--color-text-secondary: #3f3a35;
-	--color-text-tertiary: #6b625a;
-	--color-text-body: #2d2926;
+	--color-text-primary: #000000;
+	--color-text-heading: #000000;
+	--color-text-secondary: #302F38;
+	--color-text-tertiary: #4d4b56;
+	--color-text-body: #1d1d20;
 	--color-text-inverse: #ffffff;
 
-	--color-surface-page: #f8f3e9;
+	--color-surface-page: #fff8e8;
 	--color-surface-base: #ffffff;
-	--color-surface-overlay: rgba(255, 255, 255, 0.94);
-	--color-surface-soft: rgba(253, 248, 238, 0.97);
-	--color-surface-muted: #f1e7d6;
+	--color-surface-overlay: rgba(255, 255, 255, 0.97);
+	--color-surface-soft: rgba(254, 202, 38, 0.16);
+	--color-surface-muted: #f7efd9;
 
-	--color-border-subtle: rgba(17, 17, 17, 0.14);
-	--color-border-soft: rgba(17, 17, 17, 0.24);
-	--color-border-accent: rgba(221, 176, 34, 0.55);
-	--color-border-neutral: #dbc9ac;
+	--color-border-subtle: rgba(0, 0, 0, 0.12);
+	--color-border-soft: rgba(0, 0, 0, 0.24);
+	--color-border-accent: rgba(239, 144, 7, 0.52);
+	--color-border-neutral: #d8d4cf;
 
 	--color-focus-ring: var(--color-brand-primary);
 
-	--color-accent-soft: rgba(0, 140, 69, 0.12);
-	--color-accent-soft-strong: rgba(0, 140, 69, 0.24);
-	--color-accent-gradient-start-soft: rgba(224, 30, 36, 0.18);
-	--color-accent-gradient-start: rgba(224, 30, 36, 0.26);
-	--color-accent-gradient-end: rgba(0, 140, 69, 0.16);
+	--color-accent-soft: rgba(25, 158, 69, 0.12);
+	--color-accent-soft-strong: rgba(12, 117, 42, 0.28);
+	--color-accent-gradient-start-soft: rgba(242, 27, 42, 0.16);
+	--color-accent-gradient-start: rgba(242, 27, 42, 0.28);
+	--color-accent-gradient-end: rgba(25, 158, 69, 0.22);
 
-	--color-feedback-error: #b1161b;
+	--color-feedback-error: #B51818;
+
+	/* Raw palette tokens for future component-level accents */
+	--palette-red: #F21B2A;
+	--palette-yellow: #FECA26;
+	--palette-green: #199E45;
+	--palette-black: #000000;
+	--palette-roof-tile: #B51818;
+	--palette-mustard: #EF9007;
+	--palette-dark-green: #0C752A;
+	--palette-gray: #302F38;
 }

@@ -30,63 +30,108 @@ export default function Home() {
             border: "1px solid var(--color-border-subtle)",
           }}
         >
-          <Boxed maxWidth="md" padding="none" gap="md" centered={false}>
-            <p
-              style={{
-                margin: 0,
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                color: "var(--color-brand-primary)",
-              }}
+          <Boxed
+            direction="row"
+            gap="lg"
+            wrap
+            padding="none"
+            align="stretch"
+            justify="between"
+          >
+            <Boxed maxWidth="md" padding="none" gap="md" centered={false} style={{ flex: "1 1 420px" }}>
+              <p
+                style={{
+                  margin: 0,
+                  fontWeight: 700,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  color: "var(--color-brand-primary)",
+                }}
+              >
+                Por uma Porto Alegre antirracista, feminista e com justiça social
+              </p>
+
+              <Title level={1}>Pérola Sampaio</Title>
+
+              <p style={{ margin: 0, fontSize: "1.1rem", color: "var(--color-text-secondary)" }}>
+                Um projeto político construído com participação popular, compromisso
+                com os territórios e defesa inegociável da dignidade do nosso povo.
+              </p>
+
+              <Boxed direction="row" gap="sm" wrap padding="none" align="center">
+                <Link
+                  to="/sobre"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "44px",
+                    padding: "0 18px",
+                    borderRadius: "9999px",
+                    background: "var(--color-brand-primary)",
+                    color: "var(--color-text-inverse)",
+                    textDecoration: "none",
+                    fontWeight: 700,
+                  }}
+                >
+                  Conheça a trajetória
+                </Link>
+
+                <Link
+                  to="/seja-ativista"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "44px",
+                    padding: "0 18px",
+                    borderRadius: "9999px",
+                    background: "var(--color-surface-base)",
+                    color: "var(--color-text-heading)",
+                    border: "1px solid var(--color-border-soft)",
+                    textDecoration: "none",
+                    fontWeight: 700,
+                  }}
+                >
+                  Seja ativista
+                </Link>
+              </Boxed>
+            </Boxed>
+
+            <Boxed
+              padding="none"
+              centered={false}
+              gap="sm"
+              style={{ flex: "0 1 320px", minWidth: "280px" }}
             >
-              Por uma Porto Alegre antirracista, feminista e com justiça social
-            </p>
-
-            <Title level={1}>Pérola Sampaio</Title>
-
-            <p style={{ margin: 0, fontSize: "1.1rem", color: "var(--color-text-secondary)" }}>
-              Um projeto político construído com participação popular, compromisso
-              com os territórios e defesa inegociável da dignidade do nosso povo.
-            </p>
-
-            <Boxed direction="row" gap="sm" wrap padding="none" align="center">
-              <Link
-                to="/sobre"
+              <div
+                aria-label="Espaço reservado para a foto da Pérola"
                 style={{
-                  display: "inline-flex",
+                  minHeight: "340px",
+                  borderRadius: "28px",
+                  border: "1px solid var(--color-border-subtle)",
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(254,202,38,0.2))",
+                  display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  minHeight: "44px",
-                  padding: "0 18px",
-                  borderRadius: "9999px",
-                  background: "var(--color-brand-primary)",
-                  color: "var(--color-text-inverse)",
-                  textDecoration: "none",
-                  fontWeight: 700,
+                  padding: "20px",
+                  textAlign: "center",
+                  boxShadow: "0 16px 40px rgba(0, 0, 0, 0.08)",
                 }}
               >
-                Conheça a trajetória
-              </Link>
-
-              <Link
-                to="/seja-ativista"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "44px",
-                  padding: "0 18px",
-                  borderRadius: "9999px",
-                  background: "var(--color-surface-base)",
-                  color: "var(--color-text-heading)",
-                  border: "1px solid var(--color-border-soft)",
-                  textDecoration: "none",
-                  fontWeight: 700,
-                }}
-              >
-                Seja ativista
-              </Link>
+                <img
+                  src="/perola.jpeg"
+                  alt="Pérola Sampaio"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    minHeight: "340px",
+                    objectFit: "cover",
+                    borderRadius: "28px",
+                  }}
+                />
+              </div>
             </Boxed>
           </Boxed>
 

@@ -131,8 +131,11 @@ export function Footer() {
 				<p style={{ textAlign: "center", margin: "6px 0 0 0" }}>
 					Site: <a href="https://www.perola1350.com.br" target="_blank" rel="noreferrer">www.perola1350.com.br</a>
 				</p>
+				<p style={{ textAlign: "center", margin: "6px 0 0 0" }}>
+					Endereço: Rua Rua David Cherman, 90, Restinga, CEP 91790-300, 8801 - RS
+				</p>
 				<small style={{ textAlign: "center" }}>
-					© {currentYear} Pérola 1350. Todos os direitos reservados.
+					© {currentYear} Pérola 1350. Todos os direitos reservados. CNPJ 68.306.862/0001-80
 				</small>
 			</Boxed>
 		</footer>
