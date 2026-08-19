@@ -52,6 +52,7 @@ export default function Home() {
               </p>
 
               <Title level={1}>Pérola Sampaio</Title>
+              <Title level={1}>ELEICAO 2026 THAIS MARIA FERREIRA SAMPAIO DEPUTADO FEDERAL</Title>
 
               <p style={{ margin: 0, fontSize: "1.1rem", color: "var(--color-text-secondary)" }}>
                 Um projeto político construído com participação popular, compromisso
