@@ -46,7 +46,7 @@ export function Header() {
             className="site-header__campaign-card"
           >
             <strong className="site-header__campaign-title">
-              Pérola Sampaio — Pré-candidata a Deputada Federal | {currentYear}
+              Pérola Sampaio — Candidata a Deputada Federal | {currentYear}
             </strong>
             <p>
               Campanha participativa com foco em saúde pública, direitos das
